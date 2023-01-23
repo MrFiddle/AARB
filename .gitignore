@@ -2,6 +2,9 @@
 package-lock.json
 package.json
 ./node_modules
+creds.json
+creds.js
+test.js
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,firebase
