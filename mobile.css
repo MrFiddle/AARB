@@ -44,6 +44,10 @@ html {
     font-family: 'Nunito Sans' , sans-serif;
 }
 
+body {
+    display: none;
+}
+
 /* recycle */
 
 .button {
