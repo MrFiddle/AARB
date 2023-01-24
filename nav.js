@@ -8,28 +8,45 @@ const nav__menuMobile = document.querySelector('.nav__menuMobile');
 const nav = document.querySelector('nav');
 const header = document.querySelector('header');
 
-const header_height = header.clientHeight;
-const navHeight = nav.clientHeight;
+var header_height = header.clientHeight;
+var navHeight = nav.clientHeight;
 
 window.onscroll = () => {
+    // if (window.scrollY >= header_height - navHeight) {
+    //     nav.style.backgroundColor = '#002106';
+    // } else {
+    //     nav.style.backgroundColor = 'transparent';
+    // }
+    
+    // if (nav__menuMobile.style.display === 'flex') {
+    //     nav.style.backgroundColor = '#002106';
+    // }
+    header_height = header.clientHeight;
+    navHeight = nav.clientHeight;
+
+    console.log(window.scrollY);
+
     if (window.scrollY >= header_height - navHeight) {
         nav.style.backgroundColor = '#002106';
     } else {
         nav.style.backgroundColor = 'transparent';
     }
-    
-    if (nav__menuMobile.style.display === 'flex') {
-        nav.style.backgroundColor = '#002106';
-    }
 };
 
 nav__bar.addEventListener('click', () => {
+
+    if (document.documentElement.scrollTop <= header_height - navHeight) {
+     console.log("above")   
+    }
+    
     if (nav__menuMobile.style.display === 'none') {
         nav__menuMobile.style.display = 'flex';
-        nav.style.backgroundColor = '#002106';
+        if (document.documentElement.scrollTop <= header_height - navHeight) {
+            nav.style.backgroundColor = '#002106';
+        }
     } else {
         nav__menuMobile.style.display = 'none';
-        if (document.documentElement.scrollTop < header_height - navHeight) {
+        if (document.documentElement.scrollTop <= header_height - navHeight) {
             nav.style.backgroundColor = 'transparent';
         }
     }
