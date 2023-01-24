@@ -34,10 +34,6 @@ window.onscroll = () => {
 };
 
 nav__bar.addEventListener('click', () => {
-
-    if (document.documentElement.scrollTop <= header_height - navHeight) {
-     console.log("above")   
-    }
     
     if (nav__menuMobile.style.display === 'none') {
         nav__menuMobile.style.display = 'flex';
