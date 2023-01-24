@@ -24,8 +24,6 @@ window.onscroll = () => {
     header_height = header.clientHeight;
     navHeight = nav.clientHeight;
 
-    console.log(window.scrollY);
-
     if (window.scrollY >= header_height - navHeight) {
         nav.style.backgroundColor = '#002106';
     } else {
