@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
+    rel='stylesheet'
+    href='./mobile.css'/>
+    <link
          rel='stylesheet'
          href='./tablet.css'
          media='screen and (min-width: 600px)'/>
@@ -12,9 +15,6 @@
          rel='stylesheet'
          href='./desktop.css'
          media='screen and (min-width: 800px)'/>
-    <link
-         rel='stylesheet'
-         href='./mobile.css'/>
     <link rel="stylesheet" href="./nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,12 @@
                 <i class="fa-solid fa-bars-staggered"></i>
             </span>
         </div>
-        <div class="nav__menuDesktop"></div>
+        <div class="nav__menuDesktop">
+            <a href="">Nosotros</a>
+            <a href="">Noticias</a>
+            <a href="">Servicios</a>
+            <a href="">Contacto</a>
+        </div>
     </nav>
     <header>
         <span>
@@ -207,7 +212,7 @@
         </div>
     </footer>
     <script src="./nav.js"></script>
-    <!-- <script src="./query.js" type="module"></script> -->
+    <script src="./query.js" type="module"></script>
     <script>
         document.querySelector('body').style.display = 'block';
     </script>

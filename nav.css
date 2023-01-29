@@ -67,3 +67,41 @@ nav {
 .nav__menuDesktop {
     display: none;
 }
+
+@media (min-width: 800px) {
+    .nav__menuDesktop {
+        display: flex;
+        padding-right: 30px;
+    }
+
+    .nav__menuDesktop a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: bold;
+        padding: 0 20px;
+    }
+
+    .nav__menuDesktop a:hover {
+        color: #A6F5A7;
+    }
+}
+
+@media (min-width: 600px) {
+    .nav__menuDesktop {
+        display: flex;
+        padding-right: 30px;
+    }
+
+    .nav__menuDesktop a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: bold;
+        padding: 0 20px;
+    }
+
+    .nav__menuDesktop a:hover {
+        color: #A6F5A7;
+    }
+}
