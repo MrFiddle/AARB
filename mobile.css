@@ -172,7 +172,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
 }
 
 .noticias__title {
@@ -272,7 +271,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
 
     grid-area: nosotros;
 
@@ -345,9 +343,8 @@ main {
 /* clima */
 
 .clima {
-    width: 100vw;
-}
 
+}
 /* servicios */
 
 .servicios {
@@ -355,7 +352,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
 
     grid-area: servicios;
 }
@@ -430,7 +426,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     background-color: var(--surface-light-300);
 
     grid-area: contacto;
@@ -552,7 +547,7 @@ footer span {
 .footer__sections {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-left: 50px;
     padding-right: 50px;
@@ -565,6 +560,7 @@ footer span {
     text-decoration: none;
     color: #E2E3DD;
     font-weight: 900;
+    margin: 0 10px;
 }
 
 .footer__rights {

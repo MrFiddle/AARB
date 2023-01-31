@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
+    rel='stylesheet'
+    href='./mobile.css'/>
+    <link
          rel='stylesheet'
          href='./tablet.css'
          media='screen and (min-width: 600px)'/>
@@ -12,9 +15,6 @@
          rel='stylesheet'
          href='./desktop.css'
          media='screen and (min-width: 800px)'/>
-    <link
-         rel='stylesheet'
-         href='./mobile.css'/>
     <link rel="stylesheet" href="./nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,16 +25,23 @@
 <body>
     <nav>
         <div class="nav__home">
-            <span>
-                <i class="fa-solid fa-seedling"></i>
-            </span>
+            <a href="../home.html">
+                <span>
+                    <i class="fa-solid fa-seedling"></i>
+                </span>
+            </a>
         </div>
         <div class="nav__bar">
             <span>
                 <i class="fa-solid fa-bars-staggered"></i>
             </span>
         </div>
-        <div class="nav__menuDesktop"></div>
+        <div class="nav__menuDesktop">
+            <a href="./nosotros/nosotros.html">Nosotros</a>
+            <a href="../noticias/noticias.html">Noticias</a>
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </div>
     </nav>
     <header>
         <span>
@@ -50,25 +57,25 @@
     </header>
     <main>
         <div class="nav__menuMobile" id="inactive">
-            <a href="" class="nav-menuMobile__element">
+            <a href="./nosotros/nosotros.html" class="nav-menuMobile__element">
                 <span>
                     <i class="fa-solid fa-users"></i>
                 </span>
                 <p>Nosotros</p>
             </a>
-            <a href="" class="nav-menuMobile__element">
+            <a href="./servicios/servicios.html" class="nav-menuMobile__element">
                 <span>
                     <i class="fa-solid fa-tools"></i>
                 </span>
                 <p>Servicios</p>
             </a>
-            <a href="" class="nav-menuMobile__element">
+            <a href="./noticias/noticias.html" class="nav-menuMobile__element">
                 <span>
                     <i class="fa-solid fa-newspaper"></i>
                 </span>
                 <p>Noticias</p>
             </a>
-            <a href="" class="nav-menuMobile__element">
+            <a href="./contacto/contacto.html" class="nav-menuMobile__element">
                 <span>
                     <i class="fa-solid fa-envelope"></i>
                 </span>
@@ -196,10 +203,10 @@
             <p id="footer-contact__mail">Email: aarb@test.mx</p>
         </div>
         <div class="footer__sections">
-            <a href="#">Nosotros</a>
-            <a href="#">Servicios</a>
-            <a href="#">Noticias</a>
-            <a href="#">Contacto</a>
+            <a href="./nosotros/nosotros.html">Nosotros</a>
+            <a href="./servicios/servicios.html">Servicios</a>
+            <a href="./noticias/noticias.html">Noticias</a>
+            <a href="./contacto/contacto.html">Contacto</a>
         </div>
         <div class="footer__rights">
             <p><span id="footer__year">2023</span> - Asociación de Agricultores Del Río Baluarte</p>
@@ -207,7 +214,7 @@
         </div>
     </footer>
     <script src="./nav.js"></script>
-    <!-- <script src="./query.js" type="module"></script> -->
+    <script src="./query.js" type="module" async></script>
     <script>
         document.querySelector('body').style.display = 'block';
     </script>

@@ -1,0 +1,56 @@
+main {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: auto;
+    grid-template-areas: "noticias nosotros" "contacto servicios" "clima clima";
+}
+
+.clima {
+    width: 100vw;
+}
+
+header {
+    padding-left: 50px;
+    height: 60vh;
+}
+
+header span {
+    font-size: 90px;
+}
+
+header h1 {
+    font-size: 8rem;
+    line-height: 80px;
+}
+
+header p {
+    font-size: 4rem;
+    width: 90%;
+    line-height: 30px;
+}
+
+.header__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-container-light);
+    border: none;
+    border-radius: 5px;
+    color: var(--just-white);
+    font-size: var(--small-font-size-M);
+    border-radius: 20px;
+    height: 50px;
+    width: 250px;
+    
+    margin-top: 20px;
+}
+
+.header__button p {
+    font-variant: normal;
+    color: var(--on-primary-container-light);
+    font-size: 2rem;
+    text-align: center;
+
+    padding: 10px 0;
+}
