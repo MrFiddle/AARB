@@ -11,6 +11,10 @@ nav {
     z-index: 1;
 }
 
+#inactive {
+    display: none;
+}
+
 .nav__bar span {
     font-size: 30px;
     padding-right: 20px;
@@ -69,6 +73,10 @@ nav {
 }
 
 @media (min-width: 800px) {
+    .nav__bar {
+        display: none;
+    }
+
     .nav__menuDesktop {
         display: flex;
         padding-right: 30px;
@@ -103,5 +111,9 @@ nav {
 
     .nav__menuDesktop a:hover {
         color: #A6F5A7;
+    }
+
+    .nav__bar {
+        display: none;
     }
 }

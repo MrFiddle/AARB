@@ -10,17 +10,6 @@ main {
     width: 100vw;
 }
 
-.nav__bar {
-    display: none;
-}
-
-.nav__menuDesktop {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-
 header {
     padding-left: 50px;
     height: 60vh;
