@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+         rel='stylesheet'
+         href='./mobile.css' />
+    <link
+         rel='stylesheet'
+         href='./tablet.css'
+         media='screen and (min-width: 600px)'/>
+    <link
+         rel='stylesheet'
+         href='./desktop.css'
+         media='screen and (min-width: 800px)'/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8fbf13a6b9.js" crossorigin="anonymous"></script>
+    <title>Servicios</title>
+</head>
+<body>
+    <nav>
+        <div class="nav__home">
+            <a href="../home.html">
+                <span>
+                    <i class="fa-solid fa-seedling"></i>
+                </span>
+            </a>
+        </div>
+        <div class="nav__bar">
+            <span>
+                <i class="fa-solid fa-bars-staggered"></i>
+            </span>
+        </div>
+        <div class="nav__menuDesktop">
+            <a href="../nosotros/nosotros.html">Nosotros</a>
+            <a href="../noticias/noticias.html">Noticias</a>
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </div>
+    </nav>
+    <header>
+        <span>
+            <i class="fa-solid fa-people-group"></i>
+        </span>
+        <h1>Nuestros servicios</h1>
+    </header>
+    <div class="nav__menuMobile" id="inactive">
+        <a href="../nosotros/nosotros.html" class="nav-menuMobile__element">
+            <span>
+                <i class="fa-solid fa-users"></i>
+            </span>
+            <p>Nosotros</p>
+        </a>
+        <a href="../servicios/servicios.html" class="nav-menuMobile__element">
+            <span>
+                <i class="fa-solid fa-tools"></i>
+            </span>
+            <p>Servicios</p>
+        </a>
+        <a href="../noticias/noticias.html" class="nav-menuMobile__element">
+            <span>
+                <i class="fa-solid fa-newspaper"></i>
+            </span>
+            <p>Noticias</p>
+        </a>
+        <a href="../contacto/contacto.html" class="nav-menuMobile__element">
+            <span>
+                <i class="fa-solid fa-envelope"></i>
+            </span>
+            <p>Contacto</p>
+        </a>
+    </div>
+
+    <main>
+            <!-- We are creating this with JS, these are only for debugging reasons -->
+            <section class="service">
+                <h1>Deshidratadora</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, excepturi consequatur suscipit aliquam tempora eaque nesciunt fuga blanditiis eligendi laboriosam magni ratione modi cumque nisi. Porro ipsam quae perferendis quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis explicabo enim expedita nisi amet? Dolorum ratione quasi cumque neque? Voluptatum accusamus nisi voluptas eos blanditiis. Placeat tenetur doloremque quia alias.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Centrum_Eindhoven.jpg/640px-Centrum_Eindhoven.jpg" alt="">
+            </section>
+            <section class="service">
+                <h1>Deshidratadora</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, excepturi consequatur suscipit aliquam tempora eaque nesciunt fuga blanditiis eligendi laboriosam magni ratione modi cumque nisi. Porro ipsam quae perferendis quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod error animi mollitia recusandae porro? Inventore recusandae ratione, natus, quibusdam odit temporibus tempore enim nihil quas consequuntur eum reprehenderit, ipsam quia.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Centrum_Eindhoven.jpg/640px-Centrum_Eindhoven.jpg" alt="">
+            </section>
+            <section class="service">
+                <h1>Deshidratadora</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, excepturi consequatur suscipit aliquam tempora eaque nesciunt fuga blanditiis eligendi laboriosam magni ratione modi cumque nisi. Porro ipsam quae perferendis quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia veniam dignissimos quaerat! Eos debitis soluta dignissimos est fuga facilis, adipisci aliquid vitae. Nobis, praesentium facilis libero maiores aliquam consequuntur quas?</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Centrum_Eindhoven.jpg/640px-Centrum_Eindhoven.jpg" alt="">
+            </section>
+
+            <form class="form">
+                <h2>¿Interesado en algún servicio?</h2>
+                <input type="text" name="Nombre" id="" placeholder="Nombre" class="form__box"></input>
+                <select name="" id="" class="form__select">
+                    <option value="Deshidratadora">Deshidratadora</option>
+                    <option value="Deshidratadora">Deshidratadora</option>
+                    <option value="Deshidratadora">Deshidratadora</option>
+                </select>
+                <input type="email" name="email" id="" placeholder="Correo electrónico" class="form__box"></input>
+                <input type="text" name="telefono" id="" placeholder="Teléfono" class="form__box"></input>
+                <textarea name="details" id="" cols="30" rows="10" class="form__textArea" placeholder="Detalles"></textarea>
+                <button class="form__button button">
+                    <p>Enviar</p>
+                </button>
+            </form>
+
+    </main>
+
+    <script src="../nav.js"></script>
+</body>
+</html>

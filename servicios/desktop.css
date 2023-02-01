@@ -1,0 +1,32 @@
+.service {
+    width: 40vw;
+}
+
+.service img {
+    width: 40vw;
+    height: auto;
+}
+
+.form {
+    width: 40vw;
+}
+
+.form__box {
+    width: 40vw;
+}
+
+.form__select{
+    width: 40vw;
+}
+
+.form__textArea {
+    width: 40vw;
+}
+
+.service {
+    align-items: center;
+}
+
+.service h1 {
+    text-align: center;
+}
