@@ -79,8 +79,6 @@ async function queryFooter() {
     return footer;
 }
 
-body.style.display = 'none';
-
 queryData().then((sections) => {
   console.log(sections);
   // hero
