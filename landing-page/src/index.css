@@ -1,0 +1,51 @@
+:root {
+  --primary-light: #206C2E;
+  --primary-dimmed-light: #56A15C;
+  --primary-container-light: #A6F5A7;
+  --on-primary-container-light: #002106;
+
+  --surface-light: #FCFDF7;
+  --surface-light-100: #F1F6ED;
+  --surface-light-200: #EAF1E7;
+  --surface-light-300: #E2ECDF;
+  --surface-light-400: #E2ECDF;
+  --surface-light-500: #DDE9DB;
+
+  --surface-dark: #20251F;
+
+
+  --primary-dark: #8BD88D;
+
+  --just-white: #FFFFFF;
+  --just-black: #000000;
+
+  /* fontSize */
+
+  --title-font-size-M: 3.2rem;
+  --subtitle-font-size-M: 2.4rem;
+  --paragraph-font-size-M: 1.6rem;
+  --small-font-size-M: 1.4rem;
+  --smaller-font-size-M: 1.2rem;
+  --smallest-font-size-M: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-family: 'Nunito Sans' , sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  /* hardcoded solution */
+  /* overflow-x: hidden; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

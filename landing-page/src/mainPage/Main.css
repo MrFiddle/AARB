@@ -1,0 +1,471 @@
+/* mobile */
+    .main__component {
+        overflow-x: hidden;
+    }
+    main {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "noticias"
+        "nosotros"
+        "clima"
+        "servicios"
+        "contacto";
+    }
+    
+    .main_header {
+        display: flex;
+        justify-content:center;
+        flex-direction: column;
+        width: 100vw;
+        height: 40vh;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
+          ),
+          url(https://media.admagazine.com/photos/618a5dc7b94700461d620fbd/master/w_1600%2Cc_limit/93549.jpg);
+          background-size: cover;
+          background-repeat: no-repeat;
+    
+          /* padding-top: 60px; */
+          padding-left: 30px;
+    }
+    
+    .main_header span {
+        font-size: 50px;
+        color: var(--primary-container-light);
+        font-weight: 1000;
+    }
+    
+    .main_header h1 {
+        font-variant: small-caps;
+        font-size: 3.6rem;
+        color: var(--primary-dark);
+        font-weight: 1000;
+        width: 50%;
+    }
+    
+    .main_header p {
+        font-variant: small-caps;
+        font-size: 2.4rem;
+        color: var(--just-white);
+        font-weight: 1000;
+        line-height: 20px;
+    
+        width: 70%;
+        padding-bottom: 10px;
+    }
+    
+    /* noticias */
+    
+    .noticias {
+        grid-area: noticias;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+    }
+    
+    .noticias__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .noticias__title span {
+        font-size: 35px;
+        color: var(--primary-dimmed-light);
+        font-weight: 1000;
+    }
+    
+    .noticias__title h2 {
+        color: var(--primary-light);
+        font-size: var(--subtitle-font-size-M);
+        font-weight: 900;
+        padding-left: 10px;
+    }
+    
+    .noticias__slider {
+        display: flex;
+    
+        max-width: 100%;
+    
+        padding-top: 20px;
+    }
+    
+    .noticias__slider a {
+        margin: 0 5%;
+    }
+    
+    .noticias-slider__article {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 300px;
+        height: 200px;
+        min-width: 300px;
+        background-image: url('https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2023/01/16/2889427.jpg');
+        background-size: cover;
+        border-radius: 20px;
+    
+        position: relative;
+        scroll-snap-align: center;
+    }
+    
+    .noticias-slider-article__text {
+        height: 30%;
+        width: 100%;
+    
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .noticias-slider-article__text h3 {
+        color: var(--just-white);
+        font-size: var(--small-font-size-M);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .noticias-slider-article__text p {
+        color: var(--just-white);
+        font-size: var(--smaller-font-size-M);
+        padding-left: 10px;
+    }
+    
+    .noticias .button {
+        margin-top: 15px;
+    }
+    
+    .noticias a {
+        text-decoration: none;
+        font-weight: 900;
+    }
+    
+    .noticias__button {
+        margin-bottom: 50px;
+    }
+    
+    /* nosotros */
+    
+    .nosotros {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        grid-area: nosotros;
+    
+        background-color: var(--surface-light-100);
+        padding: 50px 0;
+    }
+    
+    .nosotros__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nosotros__title span {
+        font-size: 35px;
+        color: var(--primary-dimmed-light);
+        font-weight: 1000;
+    }
+    
+    .nosotros__title h2 {
+        color: var(--primary-light);
+        font-size: var(--subtitle-font-size-M);
+        font-weight: 900;
+        padding-left: 10px;
+    }
+    
+    .nosotros__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+    
+    .nosotros__content p {
+        font-size: var(--paragraph-font-size-M);
+        text-align: justify;
+    }
+    
+    .nosotros__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .nosotros__img img {
+        border-radius: 20px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .nosotros a {
+        text-decoration: none;
+        font-weight: 900;
+    }
+    
+    .nosotros__button {
+        margin-top: 15px;
+        margin-bottom: 50px;
+    }
+    
+    /* servicios */
+    
+    .servicios {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        grid-area: servicios;
+        padding: 50px 0;
+    }
+    
+    .servicios__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 50%;
+    }
+    
+    .servicios__title span {
+        font-size: 35px;
+        color: var(--primary-dimmed-light);
+        font-weight: 1000;
+    }
+    
+    .servicios__title h2 {
+        color: var(--primary-light);
+        font-size: var(--subtitle-font-size-M);
+        font-weight: 900;
+        padding-left: 10px;
+    }
+    
+    .servicios__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+    
+    .servicios__content p {
+        font-size: var(--paragraph-font-size-M);
+        text-align: justify;
+    }
+    
+    .servicios__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .servicios__img img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+    
+    .servicios a {
+        text-decoration: none;
+        font-weight: 900;
+    }
+    
+    .servicios__button {
+        margin-top: 15px;
+        margin-bottom: 50px;
+    }
+    
+    .servicios__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .servicios__img img {
+        border-radius: 20px;
+        width: 100%;
+        height: auto;
+    }
+    
+    /* contacto */
+    
+    .contacto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--surface-light-300);
+    
+        grid-area: contacto;
+        padding: 50px 0;
+    }
+    
+    .contacto__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .contacto__title span {
+        font-size: 35px;
+        color: var(--primary-dimmed-light);
+        font-weight: 1000;
+    }
+    
+    .contacto__title h2 {
+        color: var(--primary-light);
+        font-size: var(--subtitle-font-size-M);
+        font-weight: 900;
+        padding-left: 10px;
+    }
+    
+    .contacto__address {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+    
+    .contacto__address p {
+        font-size: 2.4rem;
+        text-align: center;
+        font-weight: 900;
+        color:#003910;
+    }
+    
+    #contacto__horario {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    
+    .contacto__socialMedia {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        width: 80%;
+    }
+    
+    .contacto__socialMedia a {
+        text-decoration: none;
+        font-weight: 900;
+        color: var(--primary-dimmed-light);
+        font-size: 25px;
+        padding-left: 15px;
+    }
+    
+    .contacto a {
+        text-decoration: none;
+        font-weight: 900;
+    }
+    
+    .contacto__button {
+        margin-top: 15px;
+        margin-bottom: 50px;
+    }
+
+/* desktop mq */
+@media (min-width: 800px) {
+
+    main {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: auto;
+        grid-template-areas: "noticias nosotros" "contacto servicios" "clima clima";
+    }
+    
+    .clima {
+        width: 100vw;
+    }
+    
+    .main_header {
+        padding-left: 100px;
+        height: 40vh;
+    }
+    
+    .main_header span {
+        font-size: 100px;
+    }
+    
+    .main_header h1 {
+        font-size: 9rem
+    }
+    
+    .main_header p {
+        font-size: 4.5rem;
+    }
+    
+}
+
+/* tablet */
+@media (min-width: 600px) {
+    main {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: auto;
+        grid-template-areas: "noticias nosotros" "contacto servicios" "clima clima";
+    }
+    
+    .clima {
+        width: 100vw;
+    }
+    
+    .main_header {
+        padding-left: 70px;
+        height: 50vh;
+    }
+    
+    .main_header span {
+        font-size: 90px;
+    }
+    
+    .main_header h1 {
+        font-size: 8rem;
+        line-height: 80px;
+    }
+    
+    .main_header p {
+        font-size: 4rem;
+        width: 90%;
+        line-height: 30px;
+    }
+    
+}
