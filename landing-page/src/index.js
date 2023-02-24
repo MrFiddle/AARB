@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Switch, Route, RouterProvider, Routes, Link, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route, RouterProvider, Routes, Link, createBrowserRouter, children } from "react-router-dom";
 import './index.css';
 
 
@@ -10,6 +10,8 @@ import Main from './mainPage/Main';
 import Nosotros from './Nosotros/Nosotros';
 import Servicios from './Servicios/Servicios';
 import Noticias from './Noticias/Noticias';
+import NoticiaV from './NoticiaV/NoticiaV';
+import Error404 from './components/Error404';
 
 import reportWebVitals from './reportWebVitals';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <div>Not found</div>,
+    errorElement: <Error404/>
   },
   {
     path: "/nosotros",
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/noticias",
     element: <Noticias />,
+  },
+  {
+    path: "/noticias/:id",
+    element: <NoticiaV />,
   }
 ]);
 

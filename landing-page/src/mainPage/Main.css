@@ -2,7 +2,7 @@
     .main__component {
         overflow-x: hidden;
     }
-    main {
+    .main-Main {
         width: 100vw;
         display: grid;
         grid-template-columns: 1fr;
@@ -403,7 +403,7 @@
 /* desktop mq */
 @media (min-width: 800px) {
 
-    main {
+    .main-Main {
         width: 100vw;
         display: grid;
         grid-template-columns: 50vw 50vw;
@@ -436,7 +436,7 @@
 
 /* tablet */
 @media (min-width: 600px) {
-    main {
+    .main-Main {
         width: 100vw;
         display: grid;
         grid-template-columns: 50vw 50vw;
