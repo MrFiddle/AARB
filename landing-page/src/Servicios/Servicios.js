@@ -23,6 +23,33 @@ import Footer from '../footer/Footer';
 import './Servicios.css'
 
 function Servicios() {
+
+  const [Data, setData] = useState([]);
+  const [dataLoaded , setDataLoaded] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    const querySnapshot = await getDocs(collection(db, 'servicios'));
+    return querySnapshot.docs.map((doc) => doc.data());
+  }, []);
+
+  useEffect(() => {
+    async function fetchDataAndSetData() {
+      const data = await fetchData();
+      setData(data);
+      setDataLoaded(true);
+    }
+    fetchDataAndSetData();
+  }, [fetchData]);
+
+  console.log(Data);
+  let content;
+
+  if (!dataLoaded) {
+    return <div></div>
+  } else {
+    content = Data[0]?.servicios;
+    console.log(content);
+  }
   return (
     <div>
       <Nav />
@@ -33,14 +60,21 @@ function Servicios() {
         <h1>Nuestros servicios</h1>
       </header>
       <div className='servicios_main'>
-            {/* We are creating this with JS, these are only for debugging reasons */}
+            
             <section class="service__container">
                 
-                <section class="service">
-                    <h1>Deshidratadora</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, excepturi consequatur suscipit aliquam tempora eaque nesciunt fuga blanditiis eligendi laboriosam magni ratione modi cumque nisi. Porro ipsam quae perferendis quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis explicabo enim expedita nisi amet? Dolorum ratione quasi cumque neque? Voluptatum accusamus nisi voluptas eos blanditiis. Placeat tenetur doloremque quia alias.</p>
-                    <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Centrum_Eindhoven.jpg/640px-Centrum_Eindhoven.jpg"} alt=""/>
-                </section>
+                {Object.keys(content).map((key) => {
+                    return (
+                        <section class="service">
+                            <h1>{content[key].title}</h1>
+                            <p>{content[key].content}</p>
+                            <img src={content[key].img} alt=""/>
+                        </section>
+                    )
+                })}; 
+
+                
+                
             </section>
             <form class="servicios_form" action="https://formsubmit.co/jppd0657@gmail.com" method="post">
                 <h2>¿Interesado en algún servicio?</h2>
