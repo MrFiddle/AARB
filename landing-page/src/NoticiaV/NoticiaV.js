@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react'
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
@@ -69,6 +70,7 @@ function NoticiaV(props) {
                   <h1>{Data.titulo}</h1>
                   <p>{Data.autor}</p>
                   <p>{new Date((Data.fecha).seconds * 1000 + (Data.fecha).nanoseconds / 1000000).toLocaleDateString('es-MX')}</p>
+                  <Link className='noticiaV-regresar' to="/noticias">Regresar</Link>
               </div>
               <div className='noticiaV-content'>
                   <img src={Data.img} alt={Data.titulo} />
