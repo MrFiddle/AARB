@@ -78,7 +78,7 @@ function Main() {
 
 		cardTitle = New[0]['titulo'];
 		cardFecha = New[0]['fecha'];
-		var cardFechaConverted = new Date(cardFecha.seconds * 1000 + cardFecha.nanoseconds / 1000000).toLocaleDateString();
+		var cardFechaConverted = new Date(cardFecha.seconds * 1000 + cardFecha.nanoseconds / 1000000).toLocaleDateString('es-MX');
 		cardImg = New[0]['img'];
 
 		aboutUsContent = Data[0]['content'];
@@ -114,7 +114,7 @@ function Main() {
             </a> */}
         </header>
 
-        <main>
+        <main className='main-Main'>
             <section class="noticias">
                 <div class="noticias__title">
                     <span>
