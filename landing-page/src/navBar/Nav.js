@@ -6,34 +6,14 @@ import './Nav.css'
 
 function Nav(props) {
   const [menuMobileVisible, setMenuMobileVisible] = useState(false);
-  const [navBarColor, setNavBarColor] = useState(false);
   const navRef = useRef(null);
-  const menuMobileRef = useRef(null);
-  var navPopColor;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      if (position > props.headerHeight) {
-        navRef.current.style.backgroundColor = '#002106';
-        navPopColor = 'transparent'
-      } else {
-        navRef.current.style.backgroundColor = 'transparent';
-        navPopColor = '#002106'
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [props.headerHeight]);
 
   function toggleMenu() {
-    console.log("test")
     setMenuMobileVisible(prevState => !prevState);
-    setNavBarColor(prevState => !prevState);
   }
 
   return (
-    <nav className={`nav ${navBarColor ? 'colorful' : ''}`} ref={navRef}>
+    <nav className={'nav'} ref={navRef}>
       <div className="nav__home">
         <Link to="/">
           <span>
@@ -52,7 +32,7 @@ function Nav(props) {
         <Link to="/servicios">Servicios</Link>
       </div>
       <div className={`nav__menuMobile ${menuMobileVisible ? 'visible' : ''}`}>
-        <Link to="/nosotros" className="nav-menuMobile__element" ref={menuMobileRef}>
+        <Link to="/nosotros" className="nav-menuMobile__element">
           <span>
             <FontAwesomeIcon icon={solid('users')} />
           </span>
