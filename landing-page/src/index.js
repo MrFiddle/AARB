@@ -1,11 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Switch, Route, RouterProvider, Routes, Link, createBrowserRouter, children } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import './index.css';
 
-
-import Nav from './navBar/Nav';
-import Footer from './footer/Footer';
 import Main from './mainPage/Main';
 import Nosotros from './Nosotros/Nosotros';
 import Servicios from './Servicios/Servicios';
@@ -14,8 +11,6 @@ import NoticiaV from './NoticiaV/NoticiaV';
 import Error404 from './components/Error404';
 
 import reportWebVitals from './reportWebVitals';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import './firestore'
 
 const router = createBrowserRouter([

@@ -1,31 +1,18 @@
-import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react'
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import { Carousel, ScrollingCarousel } from '@trendyol-js/react-carousel';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { Carousel } from '@trendyol-js/react-carousel';
 import ComiteMember from './ComiteMember';
-import LArrow from './elements/LArrow';
 import Nav from '../navBar/Nav'
 import './Nosotros.css'
 import {
-  doc,
-  onSnapshot,
-  updateDoc,
-  setDoc,
-  deleteDoc,
   collection,
-  serverTimestamp,
   getDocs,
-  query,
-  where,
-  orderBy,
-	enableIndexedDbPersistence,
-  limit,
 } from 'firebase/firestore';
 import db from '../firestore'
 import Footer from '../footer/Footer';
 
 function Nosotros() {
-  const [isNavTransparent, setIsNavTransparent] = useState(true);
 	const myDivRef = useRef(null);
 	const [clientHeight, setClientHeight] = useState(null);
 
@@ -46,8 +33,6 @@ function Nosotros() {
     fetchDataAndSetData();
   }, [fetchData]);
 
-  console.log(Data);
-
 	useEffect(() => {
 		if (myDivRef.current) {
 			const height = myDivRef.current.clientHeight;
@@ -60,42 +45,14 @@ function Nosotros() {
   content = Data[0]?.content;
   image = Data[0]?.img1;
 
-  let test = {
-    "presidente": [
-      "Juan Perez",
-      "Presidente",
-      "url.com",
-      1,
-    ],
-    "vicepresidente": [
-      "Juan Perez",
-      "Vicepresidente",
-      "url.com",
-      2,
-    ],
-    "secretario": [
-      "Juan Perez",
-      "Secretario",
-      "url.com",
-      3,
-    ],
-  }
-
-  console.log(test["presidente"][0]);
   let comite = Data[0]?.comite;
   let sortedComite;
-
-  // let presidenteName = comite['presidente'][0];
-  // console.log(comite);
-  // console.log(comite['presidente'][0]);
 
   if (!dataLoaded) {
     return <div></div>
   } else {
     const sortedEntries = Object.entries(comite).sort((a, b) => a[1][3] - b[1][3]);
     sortedComite = Object.fromEntries(sortedEntries);
-    console.log(sortedComite);
-    console.log(comite);
   }
 
   return (

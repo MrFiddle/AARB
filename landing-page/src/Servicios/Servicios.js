@@ -1,25 +1,13 @@
-import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import {
-    doc,
-    onSnapshot,
-    updateDoc,
-    setDoc,
-    deleteDoc,
     collection,
-    serverTimestamp,
     getDocs,
-    query,
-    where,
-    orderBy,
-    enableIndexedDbPersistence,
-    limit,
 } from 'firebase/firestore';
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
-import Footer from '../footer/Footer';
 import './Servicios.css'
 
 function Servicios() {
@@ -41,14 +29,12 @@ function Servicios() {
     fetchDataAndSetData();
   }, [fetchData]);
 
-  console.log(Data);
   let content;
 
   if (!dataLoaded) {
     return <div></div>
   } else {
     content = Data[0]?.servicios;
-    console.log(content);
   }
   return (
     <div>
@@ -73,8 +59,6 @@ function Servicios() {
                     )
                 })}; 
 
-                
-                
             </section>
             <form class="servicios_form" action="https://formsubmit.co/jppd0657@gmail.com" method="post">
                 <h2>¿Interesado en algún servicio?</h2>

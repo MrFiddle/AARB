@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import './Nav.css'
 
 function Nav(props) {
@@ -27,7 +27,6 @@ function Nav(props) {
   }, [props.headerHeight]);
 
   function toggleMenu() {
-    console.log("test")
     setMenuMobileVisible(prevState => !prevState);
     setNavBarColor(prevState => !prevState);
   }
