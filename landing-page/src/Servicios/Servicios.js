@@ -19,11 +19,13 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
+import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer';
 import './Servicios.css'
 
 function Servicios() {
 
+  const [headerHeight, headerRef] = useHeaderHeight();
   const [Data, setData] = useState([]);
   const [dataLoaded , setDataLoaded] = useState(false);
 
@@ -52,8 +54,8 @@ function Servicios() {
   }
   return (
     <div>
-      <Nav />
-      <header className='servicios_header'>
+      <Nav headerHeight={headerHeight}/>
+      <header className='servicios_header' ref={headerRef}>
         <span>
             <FontAwesomeIcon icon={solid('people-group')} />
         </span>

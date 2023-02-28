@@ -6,10 +6,36 @@ import './Nav.css'
 
 function Nav(props) {
   const [menuMobileVisible, setMenuMobileVisible] = useState(false);
+  const [scrollHeight, setScrollHeight] = useState(0);
   const navRef = useRef(null);
+  const menuMobile = useRef(null);
 
   function toggleMenu() {
     setMenuMobileVisible(prevState => !prevState);
+  }
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrollHeight(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [props.headerHeight]);
+
+  if (window.scrollY > (props.headerHeight) + 1) {
+    navRef.current.style.background = '#002106';
+  } else {
+    if (navRef.current) {
+      navRef.current.style.background = 'none';
+    }
+  }
+
+  if (menuMobileVisible) {
+    navRef.current.style.background = '#002106';
   }
 
   return (
@@ -30,6 +56,8 @@ function Nav(props) {
         <Link to="/nosotros">Nosotros</Link>
         <Link to="/noticias">Noticias</Link>
         <Link to="/servicios">Servicios</Link>
+        <p style={{backgroundColor: 'red'}}>current scroll: {scrollHeight}</p>
+        <p style={{backgroundColor: 'yellow'}}>header height: {props.headerHeight}</p>
       </div>
       <div className={`nav__menuMobile ${menuMobileVisible ? 'visible' : ''}`}>
         <Link to="/nosotros" className="nav-menuMobile__element">

@@ -20,6 +20,7 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav'
+import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer'
 import Card from '../components/Card'
 import Button from '../components/Button'
@@ -29,10 +30,7 @@ import 'react-open-weather-widget/lib/css/ReactWeather.css';
 
 function Main() {
 
-    
-    const [isNavTransparent, setIsNavTransparent] = useState(true);
-	const myDivRef = useRef(null);
-	const [clientHeight, setClientHeight] = useState(null);
+    const [headerHeight, headerRef] = useHeaderHeight();
     
     const [Data, setData] = useState([]);
     const [New, setNew] = useState([]);
@@ -47,13 +45,6 @@ function Main() {
       setNew(data2);
       setDataLoaded(true);
     }, []);
-    
-    useEffect(() => {
-      if (myDivRef.current) {
-        const height = myDivRef.current.clientHeight;
-        setClientHeight(height);
-      }
-    }, [myDivRef]);
     
     useEffect(() => {
       fetchData();
@@ -99,8 +90,8 @@ function Main() {
   return (
 
     <div className='main__component'>
-        <Nav headerHeight = {clientHeight}/>
-        <header className='main_header' ref={myDivRef}>
+        <Nav headerHeight = {headerHeight}/>
+        <header className='main_header' ref={headerRef}>
             <span>
                 <FontAwesomeIcon icon={solid('seedling')} />
             </span>
