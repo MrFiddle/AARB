@@ -6,34 +6,40 @@ import './Nav.css'
 
 function Nav(props) {
   const [menuMobileVisible, setMenuMobileVisible] = useState(false);
-  const [navBarColor, setNavBarColor] = useState(false);
+  const [scrollHeight, setScrollHeight] = useState(0);
   const navRef = useRef(null);
-  const menuMobileRef = useRef(null);
-  var navPopColor;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      if (position > props.headerHeight) {
-        navRef.current.style.backgroundColor = '#002106';
-        navPopColor = 'transparent'
-      } else {
-        navRef.current.style.backgroundColor = 'transparent';
-        navPopColor = '#002106'
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [props.headerHeight]);
+  const menuMobile = useRef(null);
 
   function toggleMenu() {
-    console.log("test")
     setMenuMobileVisible(prevState => !prevState);
-    setNavBarColor(prevState => !prevState);
+  }
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrollHeight(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [props.headerHeight]);
+
+  if (window.scrollY > (props.headerHeight) + 1) {
+    navRef.current.style.background = '#002106';
+  } else {
+    if (navRef.current) {
+      navRef.current.style.background = 'none';
+    }
+  }
+
+  if (menuMobileVisible) {
+    navRef.current.style.background = '#002106';
   }
 
   return (
-    <nav className={`nav ${navBarColor ? 'colorful' : ''}`} ref={navRef}>
+    <nav className={'nav'} ref={navRef}>
       <div className="nav__home">
         <Link to="/">
           <span>
@@ -50,9 +56,11 @@ function Nav(props) {
         <Link to="/nosotros">Nosotros</Link>
         <Link to="/noticias">Noticias</Link>
         <Link to="/servicios">Servicios</Link>
+        <p style={{backgroundColor: 'red'}}>current scroll: {scrollHeight}</p>
+        <p style={{backgroundColor: 'yellow'}}>header height: {props.headerHeight}</p>
       </div>
       <div className={`nav__menuMobile ${menuMobileVisible ? 'visible' : ''}`}>
-        <Link to="/nosotros" className="nav-menuMobile__element" ref={menuMobileRef}>
+        <Link to="/nosotros" className="nav-menuMobile__element">
           <span>
             <FontAwesomeIcon icon={solid('users')} />
           </span>
