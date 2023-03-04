@@ -9,6 +9,7 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
+import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer';
 import Card from '../components/Card';
 
@@ -17,7 +18,6 @@ import './Noticias.css'
 function Noticias() {
     const myDivRef = useRef(null);
     const [clientHeight, setClientHeight] = useState(null);
-
     const [Data, setData] = useState([]);
     const [dataLoaded , setDataLoaded] = useState(false);
 
@@ -35,22 +35,14 @@ function Noticias() {
         fetchDataAndSetData();
     }, [fetchData]);
 
-    useEffect(() => {
-        if (myDivRef.current) {
-            const height = myDivRef.current.clientHeight;
-            setClientHeight(height);
-        }
-    }, [myDivRef]);
-
     function handleClick(newId) {
         window.location.href = '/noticias/' + newId;
     }
-
     var fecha;
   return (
     <div>
-        <Nav headerHeight = {clientHeight}/>
-        <header className='noticias_header' ref={myDivRef}>
+        <Nav headerHeight = {headerHeight}/>
+        <header className='noticias_header' ref={headerRef}>
             <span>
                 <FontAwesomeIcon icon={solid('newspaper')}/>
             </span>

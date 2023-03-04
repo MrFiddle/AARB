@@ -4,6 +4,7 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- im
 import { Carousel } from '@trendyol-js/react-carousel';
 import ComiteMember from './ComiteMember';
 import Nav from '../navBar/Nav'
+import { useHeaderHeight } from '../components/HeaderHeight';
 import './Nosotros.css'
 import {
   collection,
@@ -57,8 +58,8 @@ function Nosotros() {
 
   return (
     <div>
-      <Nav headerHeight = {clientHeight}/>
-      <header className='nosotros_header' ref={myDivRef}>
+      <Nav headerHeight={headerHeight}/>
+      <header className='nosotros_header' ref={headerRef}>
         <span>
           <FontAwesomeIcon icon={solid('people-group')} />
         </span>

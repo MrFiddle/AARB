@@ -8,13 +8,13 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
+import Footer from '../footer/Footer';
 import './Servicios.css'
 
 function Servicios() {
 
   const myDivRef = useRef(null);
   const [clientHeight, setClientHeight] = useState(null);
-
   const [Data, setData] = useState([]);
   const [dataLoaded , setDataLoaded] = useState(false);
 

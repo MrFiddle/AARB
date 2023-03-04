@@ -11,13 +11,13 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav'
+import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import 'react-open-weather-widget/lib/css/ReactWeather.css';
 
 function Main() {
-
     
 	const myDivRef = useRef(null);
 	const [clientHeight, setClientHeight] = useState(null);
@@ -84,8 +84,8 @@ function Main() {
   return (
 
     <div className='main__component'>
-        <Nav headerHeight = {clientHeight}/>
-        <header className='main_header' ref={myDivRef}>
+        <Nav headerHeight = {headerHeight}/>
+        <header className='main_header' ref={headerRef}>
             <span>
                 <FontAwesomeIcon icon={solid('seedling')} />
             </span>

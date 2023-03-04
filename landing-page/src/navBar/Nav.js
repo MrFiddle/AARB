@@ -9,11 +9,13 @@ function Nav(props) {
   const [navBarColor, setNavBarColor] = useState(false);
   const [navBarColorScroll, setNavBarColorScroll] = useState(false);
   const navRef = useRef(null);
-  const menuMobileRef = useRef(null);
-  var navPopColor;
+  const menuMobile = useRef(null);
+
+  function toggleMenu() {
+    setMenuMobileVisible(prevState => !prevState);
+  }
 
   useEffect(() => {
-
     if (props.headerHeight == 'no_header') {
       navRef.current.style.backgroundColor = '#002106';
       navPopColor = 'transparent'
@@ -59,9 +61,11 @@ function Nav(props) {
         <Link to="/nosotros">Nosotros</Link>
         <Link to="/noticias">Noticias</Link>
         <Link to="/servicios">Servicios</Link>
+        <p style={{backgroundColor: 'red'}}>current scroll: {scrollHeight}</p>
+        <p style={{backgroundColor: 'yellow'}}>header height: {props.headerHeight}</p>
       </div>
       <div className={`nav__menuMobile ${menuMobileVisible ? 'visible' : ''}`}>
-        <Link to="/nosotros" className="nav-menuMobile__element" ref={menuMobileRef}>
+        <Link to="/nosotros" className="nav-menuMobile__element">
           <span>
             <FontAwesomeIcon icon={solid('users')} />
           </span>
