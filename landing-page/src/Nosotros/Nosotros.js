@@ -58,8 +58,8 @@ function Nosotros() {
 
   return (
     <div>
-      <Nav headerHeight={headerHeight}/>
-      <header className='nosotros_header' ref={headerRef}>
+      <Nav headerHeight={clientHeight}/>
+      <header className='nosotros_header' ref={myDivRef}>
         <span>
           <FontAwesomeIcon icon={solid('people-group')} />
         </span>
