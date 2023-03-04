@@ -35,6 +35,13 @@ function Noticias() {
         fetchDataAndSetData();
     }, [fetchData]);
 
+    useEffect(() => {
+        if (myDivRef.current && dataLoaded) {
+            const height = myDivRef.current.clientHeight;
+            setClientHeight(height);
+        }
+    }, [myDivRef, dataLoaded]);
+
     function handleClick(newId) {
         window.location.href = '/noticias/' + newId;
     }
