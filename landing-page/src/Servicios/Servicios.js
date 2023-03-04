@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, {useState, useEffect, useCallback, useRef} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import {
@@ -11,6 +11,9 @@ import Nav from '../navBar/Nav';
 import './Servicios.css'
 
 function Servicios() {
+
+  const myDivRef = useRef(null);
+  const [clientHeight, setClientHeight] = useState(null);
 
   const [Data, setData] = useState([]);
   const [dataLoaded , setDataLoaded] = useState(false);
@@ -29,6 +32,13 @@ function Servicios() {
     fetchDataAndSetData();
   }, [fetchData]);
 
+  useEffect(() => {
+    if (myDivRef.current && dataLoaded) {
+      const height = myDivRef.current.clientHeight;
+      setClientHeight(height);
+    }
+  }, [myDivRef, dataLoaded]);
+
   let content;
 
   if (!dataLoaded) {
@@ -38,8 +48,8 @@ function Servicios() {
   }
   return (
     <div>
-      <Nav />
-      <header className='servicios_header'>
+      <Nav headerHeight = {clientHeight}/>
+      <header className='servicios_header' ref={myDivRef}>
         <span>
             <FontAwesomeIcon icon={solid('people-group')} />
         </span>

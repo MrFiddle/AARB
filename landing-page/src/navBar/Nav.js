@@ -12,18 +12,24 @@ function Nav(props) {
   var navPopColor;
 
   useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      if (position > props.headerHeight) {
-        navRef.current.style.backgroundColor = '#002106';
-        navPopColor = 'transparent'
-      } else {
-        navRef.current.style.backgroundColor = 'transparent';
-        navPopColor = '#002106'
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    if (props.headerHeight == 'no_header') {
+      navRef.current.style.backgroundColor = '#002106';
+      navPopColor = 'transparent'
+    } else {
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        if (position > props.headerHeight) {
+          navRef.current.style.backgroundColor = '#002106';
+          navPopColor = 'transparent'
+        } else {
+          navRef.current.style.backgroundColor = 'transparent';
+          navPopColor = '#002106'
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll); 
+    }
   }, [props.headerHeight]);
 
   function toggleMenu() {

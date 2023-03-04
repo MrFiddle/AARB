@@ -37,11 +37,11 @@ function Main() {
     }, []);
     
     useEffect(() => {
-      if (myDivRef.current) {
+      if (myDivRef.current && dataLoaded) {
         const height = myDivRef.current.clientHeight;
         setClientHeight(height);
       }
-    }, [myDivRef]);
+    }, [myDivRef, dataLoaded]);
     
     useEffect(() => {
       fetchData();

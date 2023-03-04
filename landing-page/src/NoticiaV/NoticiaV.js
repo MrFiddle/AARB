@@ -48,7 +48,7 @@ function NoticiaV(props) {
   } else {
     return (
       <div>
-          <Nav />
+          <Nav headerHeight = 'no_header'/>
           <main className="noticiaV-main">
               <div className="noticiaV-title">
                   <h1>{Data.titulo}</h1>
