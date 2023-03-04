@@ -1,32 +1,21 @@
-import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react'
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import { Carousel, ScrollingCarousel } from '@trendyol-js/react-carousel';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { Carousel } from '@trendyol-js/react-carousel';
 import ComiteMember from './ComiteMember';
-import LArrow from './elements/LArrow';
 import Nav from '../navBar/Nav'
 import { useHeaderHeight } from '../components/HeaderHeight';
 import './Nosotros.css'
 import {
-  doc,
-  onSnapshot,
-  updateDoc,
-  setDoc,
-  deleteDoc,
   collection,
-  serverTimestamp,
   getDocs,
-  query,
-  where,
-  orderBy,
-	enableIndexedDbPersistence,
-  limit,
 } from 'firebase/firestore';
 import db from '../firestore'
 import Footer from '../footer/Footer';
 
 function Nosotros() {
-  const [headerHeight, headerRef] = useHeaderHeight();
+	const myDivRef = useRef(null);
+	const [clientHeight, setClientHeight] = useState(null);
 
   const [Data, setData] = useState([]);
   const [dataLoaded , setDataLoaded] = useState(false);
@@ -44,6 +33,13 @@ function Nosotros() {
     }
     fetchDataAndSetData();
   }, [fetchData]);
+
+	useEffect(() => {
+		if (myDivRef.current && dataLoaded) {
+			const height = myDivRef.current.clientHeight;
+			setClientHeight(height);
+		}
+	}, [myDivRef, dataLoaded]);
 
   // DATA
   var content, image;

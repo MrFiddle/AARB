@@ -1,20 +1,9 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import {
-  doc,
-  onSnapshot,
-  updateDoc,
-  setDoc,
-  deleteDoc,
-  collection,
-  serverTimestamp,
   getDocs,
-  query,
-  where,
-  orderBy,
-	enableIndexedDbPersistence,
-  limit,
+  collection
 } from 'firebase/firestore';
 import db from '../firestore'
 import './Footer.css'

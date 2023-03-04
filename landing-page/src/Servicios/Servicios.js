@@ -1,31 +1,20 @@
-import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react'
+import React, {useState, useEffect, useCallback, useRef} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import {
-    doc,
-    onSnapshot,
-    updateDoc,
-    setDoc,
-    deleteDoc,
     collection,
-    serverTimestamp,
     getDocs,
-    query,
-    where,
-    orderBy,
-    enableIndexedDbPersistence,
-    limit,
 } from 'firebase/firestore';
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
-import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer';
 import './Servicios.css'
 
 function Servicios() {
 
-  const [headerHeight, headerRef] = useHeaderHeight();
+  const myDivRef = useRef(null);
+  const [clientHeight, setClientHeight] = useState(null);
   const [Data, setData] = useState([]);
   const [dataLoaded , setDataLoaded] = useState(false);
 
@@ -43,19 +32,24 @@ function Servicios() {
     fetchDataAndSetData();
   }, [fetchData]);
 
-  console.log(Data);
+  useEffect(() => {
+    if (myDivRef.current && dataLoaded) {
+      const height = myDivRef.current.clientHeight;
+      setClientHeight(height);
+    }
+  }, [myDivRef, dataLoaded]);
+
   let content;
 
   if (!dataLoaded) {
     return <div></div>
   } else {
     content = Data[0]?.servicios;
-    console.log(content);
   }
   return (
     <div>
-      <Nav headerHeight={headerHeight}/>
-      <header className='servicios_header' ref={headerRef}>
+      <Nav headerHeight = {clientHeight}/>
+      <header className='servicios_header' ref={myDivRef}>
         <span>
             <FontAwesomeIcon icon={solid('people-group')} />
         </span>
@@ -75,8 +69,6 @@ function Servicios() {
                     )
                 })}; 
 
-                
-                
             </section>
             <form class="servicios_form" action="https://formsubmit.co/jppd0657@gmail.com" method="post">
                 <h2>¿Interesado en algún servicio?</h2>

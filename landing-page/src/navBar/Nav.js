@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import './Nav.css'
 
 function Nav(props) {
   const [menuMobileVisible, setMenuMobileVisible] = useState(false);
-  const [scrollHeight, setScrollHeight] = useState(0);
+  const [navBarColor, setNavBarColor] = useState(false);
+  const [navBarColorScroll, setNavBarColorScroll] = useState(false);
   const navRef = useRef(null);
   const menuMobile = useRef(null);
 
@@ -15,31 +16,35 @@ function Nav(props) {
   }
 
   useEffect(() => {
-    function handleScroll() {
-      setScrollHeight(window.scrollY);
+    if (props.headerHeight == 'no_header') {
+      navRef.current.style.backgroundColor = '#002106';
+      navPopColor = 'transparent'
+    } else {
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        if (position > props.headerHeight) {
+          // navRef.current.style.backgroundColor = '#002106';
+          // navPopColor = 'transparent'
+          setNavBarColorScroll(true);
+        } else {
+          // navRef.current.style.backgroundColor = 'transparent';
+          // navPopColor = '#002106'
+          setNavBarColorScroll(false);
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll); 
     }
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, [props.headerHeight]);
 
-  if (window.scrollY > (props.headerHeight) + 1) {
-    navRef.current.style.background = '#002106';
-  } else {
-    if (navRef.current) {
-      navRef.current.style.background = 'none';
-    }
-  }
-
-  if (menuMobileVisible) {
-    navRef.current.style.background = '#002106';
+  function toggleMenu() {
+    setMenuMobileVisible(prevState => !prevState);
+    setNavBarColor(prevState => !prevState);
   }
 
   return (
-    <nav className={'nav'} ref={navRef}>
+    <nav className={`nav ${navBarColor ? 'colorful' : ''}
+                         ${navBarColorScroll ? 'colorfulScroll' : ''}`} ref={navRef}>
       <div className="nav__home">
         <Link to="/">
           <span>

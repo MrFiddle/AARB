@@ -1,21 +1,12 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react'
 import './Main.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import {
-  doc,
-  onSnapshot,
-  updateDoc,
-  setDoc,
-  deleteDoc,
   collection,
-  serverTimestamp,
   getDocs,
   query,
-  where,
-  orderBy,
-	enableIndexedDbPersistence,
-  limit,
+  orderBy
 } from 'firebase/firestore';
 import db from '../firestore'
 
@@ -24,13 +15,12 @@ import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer'
 import Card from '../components/Card'
 import Button from '../components/Button'
-import Weather from '../components/Weather'
-import ReactWeather from 'react-open-weather-widget';
 import 'react-open-weather-widget/lib/css/ReactWeather.css';
 
 function Main() {
-
-    const [headerHeight, headerRef] = useHeaderHeight();
+    
+	const myDivRef = useRef(null);
+	const [clientHeight, setClientHeight] = useState(null);
     
     const [Data, setData] = useState([]);
     const [New, setNew] = useState([]);
@@ -47,12 +37,16 @@ function Main() {
     }, []);
     
     useEffect(() => {
+      if (myDivRef.current && dataLoaded) {
+        const height = myDivRef.current.clientHeight;
+        setClientHeight(height);
+      }
+    }, [myDivRef, dataLoaded]);
+    
+    useEffect(() => {
       fetchData();
     }, [fetchData]);
-	console.log(Data);
-	console.log(New);
-	// console.log(Data[0]['content']);
-	// DATA
+
 	var orgName, background_image, orgLogo, orgSlogan; /* Header */
 	var cardTitle, cardFecha, cardImg; /* New Card */
 	var aboutUsContent, aboutUsImage /* Nosotros */
@@ -98,11 +92,6 @@ function Main() {
             <h1>{orgName}</h1>
             <p id="hero__slogan">{orgSlogan}</p>
 						<Button url="#contacto" text="Contactanos" width="200px"/>
-            {/* <a href="#contacto">
-                <div class="header__button">
-                    <p>Contáctanos</p>
-                </div>
-            </a> */}
         </header>
 
         <main className='main-Main'>
