@@ -46,6 +46,11 @@ function Noticias() {
         window.location.href = '/noticias/' + newId;
     }
     var fecha;
+
+    if (!dataLoaded) {
+        return <div></div>
+    }
+
   return (
     <div>
         <Nav headerHeight = {clientHeight}/>
