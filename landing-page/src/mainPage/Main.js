@@ -30,7 +30,7 @@ function Main() {
       const querySnapshot = await getDocs(collection(db, 'mainPage'));
       const querySnapshot2 = await getDocs(query(collection(db, "news"), orderBy("fecha", "desc")));
       const data = querySnapshot.docs.map((doc) => doc.data());
-      const data2 = querySnapshot2.docs.map((doc) => doc.data());
+      const data2 = querySnapshot2.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setData(data);
       setNew(data2);
       setDataLoaded(true);
@@ -48,7 +48,7 @@ function Main() {
     }, [fetchData]);
 
 	var orgName, background_image, orgLogo, orgSlogan; /* Header */
-	var cardTitle, cardFecha, cardImg; /* New Card */
+	var cardTitle, cardFecha, cardImg, cardId; /* New Card */
 	var aboutUsContent, aboutUsImage /* Nosotros */
 	var contactAddress, contactHorario, contactPhone, contactEmail, contactFacebook, contactWhatsapp, contactMaps; /* Contacto */
 	var serviciosContent, serviciosImage; /* Servicios */
@@ -65,6 +65,7 @@ function Main() {
 		cardFecha = New[0]['fecha'];
 		var cardFechaConverted = new Date(cardFecha.seconds * 1000 + cardFecha.nanoseconds / 1000000).toLocaleDateString('es-MX');
 		cardImg = New[0]['img'];
+        cardId = New[0]['id'];
 
 		aboutUsContent = Data[0]['content'];
 		aboutUsImage = Data[0]['image'];
@@ -80,6 +81,12 @@ function Main() {
 		serviciosContent = Data[4]['content'];
 		serviciosImage = Data[4]['image'];
 	}
+
+    function handleClick(newId) {
+        window.location.href = '/noticias/' + newId;
+    }
+
+    console.log(New)
 
   return (
 
@@ -104,7 +111,7 @@ function Main() {
                     <h2>ÚLTIMAS NOTICIAS</h2>
                 </div>
 
-                <Card title={cardTitle} date={cardFechaConverted} backgroundImage={cardImg}/>
+                <Card title={cardTitle} date={cardFechaConverted} backgroundImage={cardImg} onClick={() => handleClick(cardId)}/>
 
                 <Button text="Ver más" />
             </section>
