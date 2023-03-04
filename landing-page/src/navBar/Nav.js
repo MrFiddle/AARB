@@ -18,17 +18,12 @@ function Nav(props) {
   useEffect(() => {
     if (props.headerHeight == 'no_header') {
       navRef.current.style.backgroundColor = '#002106';
-      navPopColor = 'transparent'
     } else {
       const handleScroll = () => {
         const position = window.pageYOffset;
         if (position > props.headerHeight) {
-          // navRef.current.style.backgroundColor = '#002106';
-          // navPopColor = 'transparent'
           setNavBarColorScroll(true);
         } else {
-          // navRef.current.style.backgroundColor = 'transparent';
-          // navPopColor = '#002106'
           setNavBarColorScroll(false);
         }
       };
@@ -61,8 +56,6 @@ function Nav(props) {
         <Link to="/nosotros">Nosotros</Link>
         <Link to="/noticias">Noticias</Link>
         <Link to="/servicios">Servicios</Link>
-        <p style={{backgroundColor: 'red'}}>current scroll: {scrollHeight}</p>
-        <p style={{backgroundColor: 'yellow'}}>header height: {props.headerHeight}</p>
       </div>
       <div className={`nav__menuMobile ${menuMobileVisible ? 'visible' : ''}`}>
         <Link to="/nosotros" className="nav-menuMobile__element">

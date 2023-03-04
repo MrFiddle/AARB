@@ -41,8 +41,8 @@ function Noticias() {
     var fecha;
   return (
     <div>
-        <Nav headerHeight = {headerHeight}/>
-        <header className='noticias_header' ref={headerRef}>
+        <Nav headerHeight = {clientHeight}/>
+        <header className='noticias_header' ref={myDivRef}>
             <span>
                 <FontAwesomeIcon icon={solid('newspaper')}/>
             </span>

@@ -84,8 +84,8 @@ function Main() {
   return (
 
     <div className='main__component'>
-        <Nav headerHeight = {headerHeight}/>
-        <header className='main_header' ref={headerRef}>
+        <Nav headerHeight = {clientHeight}/>
+        <header className='main_header' ref={myDivRef}>
             <span>
                 <FontAwesomeIcon icon={solid('seedling')} />
             </span>
