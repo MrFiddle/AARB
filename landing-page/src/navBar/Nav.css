@@ -2,6 +2,10 @@
     background: #002106;
 }
 
+.nav.colorfulScroll {
+    background: #002106;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;

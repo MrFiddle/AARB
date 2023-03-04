@@ -7,6 +7,7 @@ import './Nav.css'
 function Nav(props) {
   const [menuMobileVisible, setMenuMobileVisible] = useState(false);
   const [navBarColor, setNavBarColor] = useState(false);
+  const [navBarColorScroll, setNavBarColorScroll] = useState(false);
   const navRef = useRef(null);
   const menuMobileRef = useRef(null);
   var navPopColor;
@@ -20,11 +21,13 @@ function Nav(props) {
       const handleScroll = () => {
         const position = window.pageYOffset;
         if (position > props.headerHeight) {
-          navRef.current.style.backgroundColor = '#002106';
-          navPopColor = 'transparent'
+          // navRef.current.style.backgroundColor = '#002106';
+          // navPopColor = 'transparent'
+          setNavBarColorScroll(true);
         } else {
-          navRef.current.style.backgroundColor = 'transparent';
-          navPopColor = '#002106'
+          // navRef.current.style.backgroundColor = 'transparent';
+          // navPopColor = '#002106'
+          setNavBarColorScroll(false);
         }
       };
       window.addEventListener('scroll', handleScroll);
@@ -38,7 +41,8 @@ function Nav(props) {
   }
 
   return (
-    <nav className={`nav ${navBarColor ? 'colorful' : ''}`} ref={navRef}>
+    <nav className={`nav ${navBarColor ? 'colorful' : ''}
+                         ${navBarColorScroll ? 'colorfulScroll' : ''}`} ref={navRef}>
       <div className="nav__home">
         <Link to="/">
           <span>
