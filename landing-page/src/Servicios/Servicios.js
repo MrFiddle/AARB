@@ -40,11 +40,13 @@ function Servicios() {
   }, [myDivRef, dataLoaded]);
 
   let content;
+  let form_mail;
 
   if (!dataLoaded) {
     return <div></div>
   } else {
     content = Data[0]?.servicios;
+    form_mail = "https://formsubmit.co/" + Data[0]?.contact_email;
   }
   return (
     <div>
@@ -70,13 +72,16 @@ function Servicios() {
                 })}; 
 
             </section>
-            <form class="servicios_form" action="https://formsubmit.co/jppd0657@gmail.com" method="post">
+            <form class="servicios_form" action={form_mail} method="post">
                 <h2>¿Interesado en algún servicio?</h2>
                 <input type="text" name="Nombre" id="" placeholder="Nombre" class="servicios_form__box"></input>
                 <select name="" id="" class="servicios_form__select">
-                    <option value="Deshidratadora">Deshidratadora</option>
-                    <option value="Deshidratadora">Deshidratadora</option>
-                    <option value="Deshidratadora">Deshidratadora</option>
+                    {Object.keys(content).map((key) => {
+                      return (
+                        <option value={content[key].title}>{content[key].title}</option>
+                      )
+                    })
+                    }
                 </select>
                 <input type="email" name="email" id="" placeholder="Correo electrónico" class="servicios_form__box"></input>
                 <input type="text" name="telefono" id="" placeholder="Teléfono" class="servicios_form__box"></input>
@@ -85,7 +90,7 @@ function Servicios() {
                     <p>Enviar</p>
                 </button>
             </form>
-
+            <Footer/>
     </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import {
@@ -51,9 +52,9 @@ function Footer() {
             <p id="footer-contact__mail">Email: {footerMail}</p>
         </div>
         <div class="footer__sections">
-            <a href="./nosotros/nosotros.html">Nosotros</a>
-            <a href="./servicios/servicios.html">Servicios</a>
-            <a href="./noticias/noticias.html">Noticias</a>
+            <Link to="/nosotros">Nosotros</Link>
+            <Link to="/servicios">Servicios</Link>
+            <Link to="/noticias">Noticias</Link>
         </div>
         <div class="footer__rights">
             <p><span id="footer__year">{year}</span> - Asociación de Agricultores Del Río Baluarte</p>
