@@ -86,8 +86,6 @@ function Main() {
         window.location.href = '/noticias/' + newId;
     }
 
-    console.log(New)
-
   return (
 
     <div className='main__component'>
