@@ -10,6 +10,12 @@ function ComiteMember(props) {
     img = 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg';
   }
 
+  if (!props.img || props.img == '') {
+    img = 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg';
+  } else {
+    img = props.img;
+  }
+
   return (
     <div className='comiteCard'>
         <img src={img}/>

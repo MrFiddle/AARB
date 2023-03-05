@@ -2,12 +2,8 @@ import React from 'react'
 import './Button.css'
 
 function Button(props) {
-  const handleClick = (event) => {
-    event.preventDefault();
-    window.location.href = props.url;
-  };
   return (
-    <div style={{width: props.width}} href={props.url} onClick={handleClick} className='button'>
+    <div style={{width: props.width}} className='button' onClick={props.onClick}>
         <p>{props.text}</p>
     </div>
   )

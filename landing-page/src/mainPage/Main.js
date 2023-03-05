@@ -9,6 +9,7 @@ import {
   orderBy
 } from 'firebase/firestore';
 import db from '../firestore'
+import { useNavigate } from 'react-router-dom';
 
 import Nav from '../navBar/Nav'
 import { useHeaderHeight } from '../components/HeaderHeight';
@@ -18,6 +19,8 @@ import Button from '../components/Button'
 import 'react-open-weather-widget/lib/css/ReactWeather.css';
 
 function Main() {
+
+    const history = useNavigate();
     
 	const myDivRef = useRef(null);
 	const [clientHeight, setClientHeight] = useState(null);
@@ -83,8 +86,19 @@ function Main() {
 	}
 
     function handleClick(newId) {
-        window.location.href = '/noticias/' + newId;
+        // window.location.href = '/noticias/' + newId;
+        history('/noticias/' + newId);
     }
+
+    function buttonClick(ruta) {
+       history('/' + ruta);
+    }
+
+    function buttonClickExternal(url) {
+        window.open(url);
+    }
+
+    const contactoSection = document.querySelector('.contacto');
 
   return (
 
@@ -96,7 +110,8 @@ function Main() {
             </span>
             <h1>{orgName}</h1>
             <p id="hero__slogan">{orgSlogan}</p>
-						<Button url="#contacto" text="Contactanos" width="200px"/>
+						<Button url="#contacto" text="Contactanos" width="200px"
+                        onClick={() => {contactoSection.scrollIntoView({behavior: 'smooth'})}}/>
         </header>
 
         <main className='main-Main'>
@@ -111,7 +126,7 @@ function Main() {
 
                 <Card title={cardTitle} date={cardFechaConverted} backgroundImage={cardImg} onClick={() => handleClick(cardId)}/>
 
-                <Button text="Ver más" />
+                <Button text="Ver más" onClick={() => buttonClick('noticias')}/>
             </section>
 
             <section class="nosotros">
@@ -128,7 +143,7 @@ function Main() {
                         <img id="nosotros__img" src={aboutUsImage} alt="imagen sección nosotros"/>
                     </div>
 
-                    <Button text="Conoce más sobre nosotros"/>
+                    <Button text="Conoce más sobre nosotros" onClick={() => buttonClick('nosotros')}/>
                 </div>
             </section>
 
@@ -149,7 +164,7 @@ function Main() {
                         <img id="nosotros__img" src={serviciosImage} alt="imagen sección nosotros"/>
                     </div>
                 </div>
-                <Button text="Conoce todos nuestros servicios"/>
+                <Button text="Conoce todos nuestros servicios" onClick={() => history('/servicios')}/>
             </section>
 
             <section className='contacto' id="contacto">
@@ -176,11 +191,11 @@ function Main() {
                         <i class="fa-solid fa-envelope"></i>
                         <FontAwesomeIcon icon={solid('envelope')} />
                     </a>
-                    <a href={contactWhatsapp} id="contacto__wha">
+                    <a href={"https://wa.me/" + contactWhatsapp} id="contacto__wha">
                         <FontAwesomeIcon icon={brands('whatsapp')} />
                     </a>
                 </div>
-                <Button text="Ir a Google Maps"/>
+                <Button text="Ir a Google Maps" onClick={() => buttonClickExternal('https://goo.gl/maps/YAsM3cSQG1G6o6Eb8')}/>
             </section>
         </main>
         <Footer />
