@@ -34,7 +34,7 @@
 
 .nav__bar span {
     font-size: 30px;
-    padding-right: 20px;
+    padding-right: 30px;
     color: white;
 }
 
@@ -42,6 +42,12 @@
     font-size: 30px;
     padding-left: 20px;
     color: white;
+}
+
+.nav__home img {
+    width: 70px;
+    height: auto;
+    padding-left: 20px;
 }
 
 .nav__menuMobile.visible {
@@ -93,32 +99,16 @@
     display: none;
 }
 
-@media (min-width: 800px) {
-    .nav__bar {
-        display: none;
-    }
-
-    .nav__menuDesktop {
-        display: flex;
-        padding-right: 30px;
-    }
-
-    .nav__menuDesktop a {
-        text-decoration: none;
-        color: white;
-        font-size: 1.6rem;
-        font-weight: bold;
-    }
-
-    .nav__menuDesktop a:hover {
-        color: #A6F5A7;
-    }
-}
-
 @media (min-width: 600px) {
     .nav__menuDesktop {
         display: flex;
         padding-right: 30px;
+    }
+
+    .nav__home img {
+        width: 80px;
+        height: auto;
+        padding-left: 20px;
     }
 
     .nav__menuDesktop a {
@@ -135,5 +125,33 @@
 
     .nav__bar {
         display: none;
+    }
+}
+
+@media (min-width: 800px) {
+    .nav__bar {
+        display: none;
+    }
+
+    .nav__menuDesktop {
+        display: flex;
+        padding-right: 30px;
+    }
+
+    .nav__home img {
+        width: 80px;
+        height: auto;
+        padding-left: 20px;
+    }
+
+    .nav__menuDesktop a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    .nav__menuDesktop a:hover {
+        color: #A6F5A7;
     }
 }

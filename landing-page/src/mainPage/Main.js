@@ -17,6 +17,7 @@ import Footer from '../footer/Footer'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import 'react-open-weather-widget/lib/css/ReactWeather.css';
+import AARB_Logo_Color from '../assets/color_logo.svg'
 
 function Main() {
 
@@ -105,10 +106,8 @@ function Main() {
     <div className='main__component'>
         <Nav headerHeight = {clientHeight}/>
         <header className='main_header' ref={myDivRef}>
-            <span>
-                <FontAwesomeIcon icon={solid('seedling')} />
-            </span>
-            <h1>{orgName}</h1>
+
+            <img src={AARB_Logo_Color} alt="logo" id="hero__logo"/>
             <p id="hero__slogan">{orgSlogan}</p>
 						<Button url="#contacto" text="Contactanos" width="200px"
                         onClick={() => {contactoSection.scrollIntoView({behavior: 'smooth'})}}/>

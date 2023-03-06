@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import AARB_Logo_Nav from '../assets/white_nav.svg'
 import './Nav.css'
 
 function Nav(props) {
@@ -42,9 +43,10 @@ function Nav(props) {
                          ${navBarColorScroll ? 'colorfulScroll' : ''}`} ref={navRef}>
       <div className="nav__home">
         <Link to="/">
-          <span>
+          {/* <span>
             <FontAwesomeIcon icon={solid('seedling')} />
-          </span>
+          </span> */}
+          <img src={AARB_Logo_Nav} alt="AARB Logo" />
         </Link>
       </div>
       <div className="nav__bar" onClick={toggleMenu}>

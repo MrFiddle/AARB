@@ -32,6 +32,13 @@
           /* padding-top: 60px; */
           padding-left: 30px;
     }
+
+    .main_header img {
+        width: 150px;
+        height: auto;
+
+        padding-bottom: 10px;
+    }
     
     .main_header span {
         font-size: 50px;
@@ -400,40 +407,6 @@
         margin-bottom: 50px;
     }
 
-/* desktop mq */
-@media (min-width: 800px) {
-
-    .main-Main {
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 50vw 50vw;
-        grid-template-rows: auto;
-        grid-template-areas: "noticias nosotros" "contacto servicios" "clima clima";
-    }
-    
-    .clima {
-        width: 100vw;
-    }
-    
-    .main_header {
-        padding-left: 100px;
-        height: 40vh;
-    }
-    
-    .main_header span {
-        font-size: 100px;
-    }
-    
-    .main_header h1 {
-        font-size: 9rem
-    }
-    
-    .main_header p {
-        font-size: 4.5rem;
-    }
-    
-}
-
 /* tablet */
 @media (min-width: 600px) {
     .main-Main {
@@ -452,6 +425,13 @@
         padding-left: 70px;
         height: 50vh;
     }
+
+    .main_header img {
+        width: 200px;
+        height: auto;
+
+        padding-bottom: 10px;
+    }
     
     .main_header span {
         font-size: 90px;
@@ -466,6 +446,47 @@
         font-size: 4rem;
         width: 90%;
         line-height: 30px;
+    }
+    
+}
+
+/* desktop mq */
+@media (min-width: 800px) {
+
+    .main-Main {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: auto;
+        grid-template-areas: "noticias nosotros" "contacto servicios" "clima clima";
+    }
+    
+    .clima {
+        width: 100vw;
+    }
+    
+    .main_header {
+        padding-left: 80px;
+        height: 60vh;
+    }
+    
+    .main_header img {
+        width: 300px;
+        height: auto;
+
+        padding-bottom: 10px;
+    }
+    
+    .main_header span {
+        font-size: 100px;
+    }
+    
+    .main_header h1 {
+        font-size: 9rem
+    }
+    
+    .main_header p {
+        font-size: 4.5rem;
     }
     
 }
