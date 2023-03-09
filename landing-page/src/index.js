@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 
 import Main from './mainPage/Main';
@@ -10,37 +10,28 @@ import Noticias from './Noticias/Noticias';
 import NoticiaV from './NoticiaV/NoticiaV';
 import Error404 from './components/Error404';
 
+import Login from './CMS/Login';
+import HomeCMS from './CMS/HomeCMS/HomeCMS';
+
 import reportWebVitals from './reportWebVitals';
 import './firestore'
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    errorElement: <Error404/>
-  },
-  {
-    path: "/nosotros",
-    element: <Nosotros />,
-  },
-  {
-    path: "/servicios",
-    element: <Servicios />,
-  },
-  {
-    path: "/noticias",
-    element: <Noticias />,
-  },
-  {
-    path: "/noticias/:id",
-    element: <NoticiaV />,
-  }
-]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    {/* <RouterProvider router={router}/> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="nosotros" element={<Nosotros />} />
+        <Route path="servicios" element={<Servicios />} />
+        <Route path="noticias" element={<Noticias />} />
+        <Route path="noticias/:id" element={<NoticiaV />} />
+        <Route path="adminCMS" element={<Login />}/>
+        <Route path="adminCMS/home" element={<HomeCMS />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
