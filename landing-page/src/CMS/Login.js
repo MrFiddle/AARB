@@ -4,14 +4,17 @@ import { Link, useNavigate, Outlet } from 'react-router-dom'
 import './Login.css'
 
 import auth from '../firebaseAuth'
+import { useUserAuthContext } from './context/UserAuthContext'
+import { async } from '@firebase/util'
 
 function Login() {
 
-  const history = useNavigate()
+  const navigate = useNavigate()
 
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const {logIn} = useUserAuthContext()
 
   function handleUserChange(e) {
     setUser(e.target.value)
@@ -21,28 +24,16 @@ function Login() {
     setPassword(e.target.value)
   }
 
-  function buttonClickTest() {
-    history('/noticias')
-  }
-
- const handleLogin = (e) => {
-    e.preventDefault()
-    signInWithEmailAndPassword(auth, user, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-        history('home')
-      }
-      )
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-        setError("Usuario o contraseña incorrectos")
-      }
-      );
-  }
+ const handleLogin = async (e) => {
+    e.preventDefault();
+    setError('')
+    try {
+      await logIn(user, password);
+      navigate('/adminCMS/home')
+    } catch (error) {
+      setError("Usuario o contraseña incorrectos")
+    }
+  };
 
   return (
     <div className='Login_Main'>

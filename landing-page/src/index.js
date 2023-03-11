@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import './index.css';
 
 import Main from './mainPage/Main';
@@ -10,6 +10,7 @@ import Noticias from './Noticias/Noticias';
 import NoticiaV from './NoticiaV/NoticiaV';
 import Error404 from './components/Error404';
 
+import { UserAuthContextProvider } from './CMS/context/UserAuthContext';
 import Login from './CMS/Login';
 import HomeCMS from './CMS/HomeCMS/HomeCMS';
 
@@ -27,7 +28,9 @@ root.render(
         <Route path="servicios" element={<Servicios />} />
         <Route path="noticias" element={<Noticias />} />
         <Route path="noticias/:id" element={<NoticiaV />} />
-        <Route path="adminCMS" element={<Login />}/>
+        <Route path="adminCMS" element={<UserAuthContextProvider>
+          <Login />
+        </UserAuthContextProvider>}/>
         <Route path="adminCMS/home" element={<HomeCMS />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
