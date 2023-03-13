@@ -4,6 +4,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
+    getIdToken,
+    
 } from 'firebase/auth'
 
 import auth from "../../firebaseAuth";
@@ -15,8 +17,15 @@ export function UserAuthContextProvider ({children}) {
   const [user, setUser] = useState("");
 
   function logIn(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
-  }
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Get the user's session token and save it to localStorage
+        return getIdToken(userCredential.user);
+      })
+      .then((idToken) => {
+        localStorage.setItem('userToken', idToken);
+      })
+  }  
 
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (currentUser) => {

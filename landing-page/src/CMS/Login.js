@@ -1,11 +1,8 @@
 import React, {useState} from 'react'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { Link, useNavigate, Outlet } from 'react-router-dom'
+import { useNavigate, Outlet } from 'react-router-dom'
 import './Login.css'
 
-import auth from '../firebaseAuth'
 import { useUserAuthContext } from './context/UserAuthContext'
-import { async } from '@firebase/util'
 
 function Login() {
 
@@ -29,9 +26,9 @@ function Login() {
     setError('')
     try {
       await logIn(user, password);
-      navigate('/adminCMS/panel')
+      window.location.reload();
     } catch (error) {
-      setError('error')
+      setError('Credenciales incorrectas. Verifique su usuario y contraseña e intente nuevamente.')
     }
   };
 
@@ -45,8 +42,8 @@ function Login() {
           <button type='submit' className='Login_Button'>
             <p>Entrar</p>
           </button>
+          {error && <p className='Login_Error'>{error}</p>}
         </form>
-        {error && <p className='Login_Error'>{error}</p>}
       </div>
     </div>
   )  

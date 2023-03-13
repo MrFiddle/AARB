@@ -20,13 +20,16 @@ import CMS from './CMS/CMS/CMS';
 import reportWebVitals from './reportWebVitals';
 import './firestore'
 import ProtectedRoute from './CMS/ProtectedRoute/ProtectedRoute';
+import AvailableRoutes from './AvailableRoutes/AvailableRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <RouterProvider router={router}/> */}
     <BrowserRouter>
-      <UserAuthContextProvider>
+
+      <AvailableRoutes />
+      {/* <UserAuthContextProvider>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="nosotros" element={<Nosotros />} />
@@ -42,9 +45,10 @@ root.render(
               <CMS/>
             </ProtectedRoute>} />
 
-          {/* <Route path="*" element={<Error404 />} /> */}
+          <Route path="*" element={<Error404 />} />
         </Routes>
-      </UserAuthContextProvider>
+      </UserAuthContextProvider> */}
+
     </BrowserRouter>
   </React.StrictMode>
 );
