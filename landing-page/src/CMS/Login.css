@@ -12,8 +12,8 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 570px;
-    height: 770px;
+    width: auto;
+    height: auto;
     background-color: #D5E8D0;
     border-radius: 20px;
 }
@@ -24,7 +24,7 @@ form {
     justify-content: center;
     align-items: center;
     width: 570px;
-    height: 770px;
+    height: 700px;
     background-color: #D5E8D0;
     border-radius: 20px;
 }
@@ -39,7 +39,7 @@ form {
 }
 
 .Login_Container input {
-    width: 60%;
+    width: 350px;
     height: 50px;
     border-radius: 10px;
     border: none;
