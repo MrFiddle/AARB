@@ -1,0 +1,70 @@
+.HomeCMS_Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #E4EDE1;
+}
+
+.HomeCMS_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.4rem;
+}
+
+.HomeCMS_title span {
+    font-size: 6rem;
+    color: #8BD88D;
+}
+
+.HomeCMS_title h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+    color: #0B5C21;
+}
+
+/* grid with one column, 4 elements */
+
+.HomeCMS_Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;  
+}
+
+.HomeCMS_Grid_Item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F6ED;
+    border-radius: 10px;
+
+    width: 150px;
+    height: 150px;
+}
+
+.HomeCMS_Grid_Item a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #216C2F;
+}
+
+.HomeCMS_Grid_Item span {
+    font-size: 4.5rem;
+    color: #8BD88D;
+}
+
+.HomeCMS_Grid_Item h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+}

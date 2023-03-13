@@ -7,6 +7,17 @@
     align-items: center;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 570px;
+    height: 770px;
+    background-color: #D5E8D0;
+    border-radius: 20px;
+}
+
 .Login_Container {
     display: flex;
     flex-direction: column;

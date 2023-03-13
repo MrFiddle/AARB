@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route  } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet  } from "react-router-dom";
 import './index.css';
 
 import Main from './mainPage/Main';
@@ -12,28 +12,39 @@ import Error404 from './components/Error404';
 
 import { UserAuthContextProvider } from './CMS/context/UserAuthContext';
 import Login from './CMS/Login';
-import HomeCMS from './CMS/HomeCMS/HomeCMS';
+import NavCMS from './CMS/CMS/components/NavCMS/NavCMS';
+import HomeCMS from './CMS/CMS/components/HomeCMS/HomeCMS';
+import MainPage from './CMS/CMS/components/MainPageCMS/MainPage';
+import CMS from './CMS/CMS/CMS';
 
 import reportWebVitals from './reportWebVitals';
 import './firestore'
+import ProtectedRoute from './CMS/ProtectedRoute/ProtectedRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <RouterProvider router={router}/> */}
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="nosotros" element={<Nosotros />} />
-        <Route path="servicios" element={<Servicios />} />
-        <Route path="noticias" element={<Noticias />} />
-        <Route path="noticias/:id" element={<NoticiaV />} />
-        <Route path="adminCMS" element={<UserAuthContextProvider>
-          <Login />
-        </UserAuthContextProvider>}/>
-        <Route path="adminCMS/home" element={<HomeCMS />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
+      <UserAuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="nosotros" element={<Nosotros />} />
+          <Route path="servicios" element={<Servicios />} />
+          <Route path="noticias" element={<Noticias />} />
+          <Route path="noticias/:id" element={<NoticiaV />} />
+          <Route path="adminCMS"
+          element={<Login />}>
+          </Route>
+
+          <Route path="adminCMS/panel"
+            element={<ProtectedRoute>
+              <CMS/>
+            </ProtectedRoute>} />
+
+          {/* <Route path="*" element={<Error404 />} /> */}
+        </Routes>
+      </UserAuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

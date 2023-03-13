@@ -1,0 +1,52 @@
+.NavCMS {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 100vh;
+}
+
+.NavCMS_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-align: left;
+    text-decoration: none;
+    color: #002106;
+    width: 90%;
+    margin: 10px;
+}
+
+.especial {
+    margin-bottom: 40px;
+}
+
+.especial h1 {
+    background-color: #F1F6ED;
+}
+
+.NavCMS_item h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+    border-radius: 10px;
+
+    width: 180px;
+}
+
+.NavCMS_item span {
+    font-size: 3.5rem;
+    color: #206C2E;
+}
+
+
+.NavCMS_Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100vh;
+    background-color: #D5E8D0;
+}

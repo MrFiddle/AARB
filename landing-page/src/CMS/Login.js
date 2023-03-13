@@ -29,25 +29,27 @@ function Login() {
     setError('')
     try {
       await logIn(user, password);
-      navigate('/adminCMS/home')
+      navigate('/adminCMS/panel')
     } catch (error) {
-      setError("Usuario o contraseña incorrectos")
+      setError('error')
     }
   };
 
   return (
     <div className='Login_Main'>
-        <div className='Login_Container'>
-            <h1>INICIAR SESIÓN</h1>
-            <input type='text' placeholder='Usuario' value={user} onChange={handleUserChange} />
-            <input type='password' placeholder='Contraseña' value={password} onChange={handlePasswordChange} />
-            <div className='Login_Button' onClick={handleLogin}>
-              <p>Entrar</p>
-            </div>
-            {error && <p className='Login_Error'>{error}</p>}
-        </div>
+      <div className='Login_Container'>
+        <form onSubmit={handleLogin}>
+          <h1>INICIAR SESIÓN</h1>
+          <input type='text' placeholder='Usuario' value={user} onChange={handleUserChange} />
+          <input type='password' placeholder='Contraseña' value={password} onChange={handlePasswordChange} />
+          <button type='submit' className='Login_Button'>
+            <p>Entrar</p>
+          </button>
+        </form>
+        {error && <p className='Login_Error'>{error}</p>}
+      </div>
     </div>
-  )
+  )  
 }
 
 export default Login
