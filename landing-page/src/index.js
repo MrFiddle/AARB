@@ -3,23 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Outlet  } from "react-router-dom";
 import './index.css';
 
-import Main from './mainPage/Main';
-import Nosotros from './Nosotros/Nosotros';
-import Servicios from './Servicios/Servicios';
-import Noticias from './Noticias/Noticias';
-import NoticiaV from './NoticiaV/NoticiaV';
-import Error404 from './components/Error404';
-
-import { UserAuthContextProvider } from './CMS/context/UserAuthContext';
-import Login from './CMS/Login';
-import NavCMS from './CMS/CMS/components/NavCMS/NavCMS';
-import HomeCMS from './CMS/CMS/components/HomeCMS/HomeCMS';
-import MainPage from './CMS/CMS/components/MainPageCMS/MainPage';
-import CMS from './CMS/CMS/CMS';
-
 import reportWebVitals from './reportWebVitals';
 import './firestore'
-import ProtectedRoute from './CMS/ProtectedRoute/ProtectedRoute';
 import AvailableRoutes from './AvailableRoutes/AvailableRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

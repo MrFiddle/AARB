@@ -8,7 +8,7 @@ function NavCMS() {
   return (
     <div className='NavCMS'>
         <div className='NavCMS_Container'>
-          <Link to='/adminCMS/panel' className='NavCMS_item especial'>
+          <Link to='/adminCMS' className='NavCMS_item especial'>
             <h1>Inicio</h1>
           </Link>
 

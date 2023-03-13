@@ -11,9 +11,9 @@ import Error404 from '../components/Error404';
 import Login from '../CMS/Login';
 import { UserAuthContextProvider } from '../CMS/context/UserAuthContext';
 
-import NavCMS from '../CMS/CMS/components/NavCMS/NavCMS';
-import HomeCMS from '../CMS/CMS/components/HomeCMS/HomeCMS';
-import MainPage from '../CMS/CMS/components/MainPageCMS/MainPage';
+import NavCMS from '../CMS/NavCMS';
+import HomeCMS from '../CMS/Cards/HomeCMS/HomeCMS';
+import MainPage from '../CMS/Cards/MainPageCMS/MainPage';
 
 function AvailableRoutes() {
 
