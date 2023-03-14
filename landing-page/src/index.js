@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Outlet  } from "react-router-dom";
+import { BrowserRouter  } from "react-router-dom";
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
@@ -10,30 +10,8 @@ import AvailableRoutes from './AvailableRoutes/AvailableRoutes';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <RouterProvider router={router}/> */}
     <BrowserRouter>
-
       <AvailableRoutes />
-      {/* <UserAuthContextProvider>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="nosotros" element={<Nosotros />} />
-          <Route path="servicios" element={<Servicios />} />
-          <Route path="noticias" element={<Noticias />} />
-          <Route path="noticias/:id" element={<NoticiaV />} />
-          <Route path="adminCMS"
-          element={<Login />}>
-          </Route>
-
-          <Route path="adminCMS/panel"
-            element={<ProtectedRoute>
-              <CMS/>
-            </ProtectedRoute>} />
-
-          <Route path="*" element={<Error404 />} />
-        </Routes>
-      </UserAuthContextProvider> */}
-
     </BrowserRouter>
   </React.StrictMode>
 );

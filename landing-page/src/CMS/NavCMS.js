@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import './NavCMS.css'
@@ -37,7 +37,6 @@ function NavCMS() {
             <h1>Noticias</h1>
           </Link>
         </div>
-        <Outlet/>
     </div>
   )
 }

@@ -11,6 +11,7 @@ import Error404 from '../components/Error404';
 import Login from '../CMS/Login';
 import { UserAuthContextProvider } from '../CMS/context/UserAuthContext';
 
+import CMS from '../CMS/CMS';
 import NavCMS from '../CMS/NavCMS';
 import HomeCMS from '../CMS/Cards/HomeCMS/HomeCMS';
 import MainPage from '../CMS/Cards/MainPageCMS/MainPage';
@@ -48,7 +49,7 @@ function AvailableRoutes() {
           <Navigate to="/adminCMS" />
         }/>
 
-        <Route path="adminCMS/" element={<NavCMS />}>
+        <Route path="adminCMS/" element={<CMS />}>
           <Route path="" element={<HomeCMS />} />
           <Route path="home" element={<MainPage />} />
         </Route>

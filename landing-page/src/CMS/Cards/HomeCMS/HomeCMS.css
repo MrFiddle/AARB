@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
     background-color: #E4EDE1;
+
+    width: 100vw;
+    margin-left: 50%;
 }
 
 .HomeCMS_title {

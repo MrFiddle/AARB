@@ -49,9 +49,6 @@ function HomeCMS() {
             </div>
         </div>
 
-
-
-
     </div>
   )
 }

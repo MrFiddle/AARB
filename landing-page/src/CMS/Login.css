@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-form {
+.Login_Main form {
     display: flex;
     flex-direction: column;
     justify-content: center;

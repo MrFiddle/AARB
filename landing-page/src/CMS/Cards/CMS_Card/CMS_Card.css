@@ -1,0 +1,34 @@
+/* card with three fields (name, content and edit) */
+.CMS_Card {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 50px;
+    background-color: #B9CCB4;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.CMS-Card_name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    justify-self: center;
+}
+
+.CMS-Card_content {
+    font-size: 1.6rem;
+    justify-self: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.CMS-Card_edit {
+    font-size: 2.5rem;
+    justify-self: center;
+    cursor: pointer;
+}
