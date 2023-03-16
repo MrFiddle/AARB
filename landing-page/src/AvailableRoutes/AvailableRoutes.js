@@ -1,5 +1,4 @@
 import React from 'react'
-import { useUserAuthContext } from '../CMS/context/UserAuthContext'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Main from '../mainPage/Main';
@@ -15,6 +14,9 @@ import CMS from '../CMS/CMS';
 import NavCMS from '../CMS/NavCMS';
 import HomeCMS from '../CMS/Cards/HomeCMS/HomeCMS';
 import MainPage from '../CMS/Cards/MainPageCMS/MainPage';
+import NosotrosCMS from '../CMS/Cards/NosotrosCMS/NosotrosCMS';
+import ServiciosCMS from '../CMS/Cards/ServiciosCMS/ServiciosCMS';
+import NoticiasCMS from '../CMS/Cards/NoticiasCMS/NoticiasCMS';
 
 function AvailableRoutes() {
 
@@ -52,6 +54,9 @@ function AvailableRoutes() {
         <Route path="adminCMS/" element={<CMS />}>
           <Route path="" element={<HomeCMS />} />
           <Route path="home" element={<MainPage />} />
+          <Route path="nosotros" element={<NosotrosCMS />} />
+          <Route path='servicios' element={<ServiciosCMS />}/>
+          <Route path='noticias' element={<NoticiasCMS />}/>
         </Route>
 
         <Route path="*" element={<Error404 />} />

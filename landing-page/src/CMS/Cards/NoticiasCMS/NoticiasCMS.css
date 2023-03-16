@@ -1,4 +1,4 @@
-.NosotrosCMS_Container {
+.NoticiasCMS_Container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,5 +8,4 @@
     background-color: #E4EDE1;
 
     margin-left: 50%;
-
 }

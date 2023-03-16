@@ -18,19 +18,19 @@ function NavCMS() {
             </span>
             <h1>Página Principal</h1>
           </Link>
-          <Link to='/adminCMS/panel' className='NavCMS_item'>
+          <Link to='nosotros' className='NavCMS_item'>
             <span>
               <FontAwesomeIcon icon={solid('users')} />
             </span>
             <h1>Nosotros</h1>
           </Link>
-          <Link to='/adminCMS/panel' className='NavCMS_item'>
+          <Link to='servicios' className='NavCMS_item'>
             <span>
               <FontAwesomeIcon icon={solid('tools')} />
             </span>
             <h1>Servicios</h1>
           </Link>
-          <Link to='/adminCMS/panel' className='NavCMS_item'>
+          <Link to='noticias' className='NavCMS_item'>
             <span>
               <FontAwesomeIcon icon={solid('newspaper')} />
             </span>
