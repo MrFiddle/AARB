@@ -17,6 +17,7 @@ import MainPage from '../CMS/Cards/MainPageCMS/MainPage';
 import NosotrosCMS from '../CMS/Cards/NosotrosCMS/NosotrosCMS';
 import ServiciosCMS from '../CMS/Cards/ServiciosCMS/ServiciosCMS';
 import NoticiasCMS from '../CMS/Cards/NoticiasCMS/NoticiasCMS';
+import EditView from '../CMS/Cards/EditView/EditView';
 
 function AvailableRoutes() {
 
@@ -57,6 +58,7 @@ function AvailableRoutes() {
           <Route path="nosotros" element={<NosotrosCMS />} />
           <Route path='servicios' element={<ServiciosCMS />}/>
           <Route path='noticias' element={<NoticiasCMS />}/>
+          <Route path='editar/:coll/:doc/:field' element={<EditView />}/>
         </Route>
 
         <Route path="*" element={<Error404 />} />

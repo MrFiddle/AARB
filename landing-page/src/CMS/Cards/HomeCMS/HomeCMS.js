@@ -24,7 +24,7 @@ function HomeCMS() {
                 </Link>
             </div>
             <div className='HomeCMS_Grid_Item'>
-                <Link to='about_us'>
+                <Link to='nosotros'>
                     <span>
                         <FontAwesomeIcon icon={solid('users')} />
                     </span>
@@ -32,7 +32,7 @@ function HomeCMS() {
                 </Link>
             </div>
             <div className='HomeCMS_Grid_Item'>
-                <Link to='services'>
+                <Link to='servicios'>
                     <span>
                         <FontAwesomeIcon icon={solid('tools')} />
                     </span>
@@ -40,7 +40,7 @@ function HomeCMS() {
                 </Link>
             </div>
             <div className='HomeCMS_Grid_Item'>
-                <Link to='news'>
+                <Link to='noticias'>
                     <span>
                         <FontAwesomeIcon icon={solid('newspaper')} />
                     </span>

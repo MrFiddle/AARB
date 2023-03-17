@@ -1,0 +1,23 @@
+.InputCMS {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 70%;
+    min-height: 200px ;
+    height: auto;
+    padding: 30px;
+    box-sizing: border-box;
+
+    background-color: #B9CCB4;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border: none;
+    resize: vertical;
+
+    font-family: inherit;
+    font-size: 1.6rem;
+}
