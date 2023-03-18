@@ -47,13 +47,15 @@ function Nosotros() {
   image = Data[0]?.img1;
 
   let comite = Data[0]?.comite;
-  let sortedComite;
+  let sortedData;
 
   if (!dataLoaded) {
     return <div></div>
   } else {
-    const sortedEntries = Object.entries(comite).sort((a, b) => a[1][3] - b[1][3]);
-    sortedComite = Object.fromEntries(sortedEntries);
+    sortedData = Object.entries(comite)
+    .sort(([, a], [, b]) => a.order - b.order)
+    .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+    console.log(sortedData)
   }
 
   return (
@@ -88,12 +90,17 @@ function Nosotros() {
               useArrowKeys={true}
               >
 
-                {Object.keys(sortedComite).map((key) => {
-                  const [nombre, cargo, img] = sortedComite[key];
-                  return (
-                    <ComiteMember nombre={nombre} cargo={cargo} img={img}/>
-                  )
-                })}
+            {Object.entries(sortedData).map(([key, value]) => {
+              return (
+                <ComiteMember
+                  key={key}
+                  nombre={value.nombre}
+                  cargo={value.cargo}
+                  img={value.img}
+                  />
+              )
+            })
+            }
 
               </Carousel>
         </section>

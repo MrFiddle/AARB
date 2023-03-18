@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import './CMS_Card.css'
-import { collection } from 'firebase/firestore'
 
 function CMS_Card(props) {
 
   let navigate = useNavigate()
 
   function handleClick (data) {
-    navigate('/adminCMS/editar/' + props.collection + '/' + props.document + '/' + props.field, {state: {data}})
+    if (props.fieldTwo) {
+      navigate('/adminCMS/editar/' + props.collection + '/' + props.document + '/' + props.field + '/' + props.fieldTwo, {state: {data}})
+    } else {
+      console.log('no fieldtwo')
+      navigate('/adminCMS/editar/' + props.collection + '/' + props.document + '/' + props.field, {state: {data}})
+    }
   }
 
   return (
@@ -24,6 +28,7 @@ function CMS_Card(props) {
             collection: props.collection,
             document: props.document,
             field: props.field,
+            fieldTwo: props.fieldTwo,
             name: props.name,
             content: props.content
            } )

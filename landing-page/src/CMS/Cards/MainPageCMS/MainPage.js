@@ -31,11 +31,6 @@ function MainPage() {
     fetchData();
   }, [fetchData]);
 
-  var background_image, orgSlogan; /* Header */
-  var aboutUsContent, aboutUsImage /* Nosotros */
-  var contactAddress, contactHorario, contactPhone, contactEmail, contactFacebook, contactWhatsapp, contactMaps; /* Contacto */
-  var serviciosContent, serviciosImage; /* Servicios */
-
   if (!dataLoaded) {
     return <div></div>;
   }
