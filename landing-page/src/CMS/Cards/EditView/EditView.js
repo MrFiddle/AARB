@@ -30,6 +30,7 @@ function EditView(props) {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [OldData, setOldData] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const [isObject, setIsObject] = useState(false);
 
   const fetchData = useCallback(async () => {
     const docSnapshot = await getDoc(doc(db, data?.collection, data?.document));
@@ -87,17 +88,25 @@ function EditView(props) {
             </span>
               <h1>{data?.name}</h1>
             </div>
-            {data?.order.map((key) => {
-              const value = realData[key];
-              return (
-                <InputCMS
-                  defaultData={value}
-                  onDataChange={handleDataChange}
-                  field={key}
-                  key={key}
-                />
-              );
-            })}
+            {typeof Data === 'object' && (
+
+              data?.order.map((key) => {
+                const value = realData[key];
+                return (
+                  <InputCMS
+                    defaultData={value}
+                    onDataChange={handleDataChange}
+                    field={key}
+                    key={key}
+                  />
+                );
+              }))
+            }
+            {typeof Data !== 'object' && (
+              <InputCMS
+                defaultData={realData}
+                onDataChange={handleDataChange}
+              />)}
 
             <Button text='Actualizar' onClick={update}/>
       </div>
