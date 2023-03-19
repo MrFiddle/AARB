@@ -37,9 +37,8 @@ function EditView(props) {
     setOldData(docSnapshot.data()[data?.field]);
     setDataLoaded(true);
   }, []);
-  
-  // console.log('Data:', Data)
-  console.log(data?.fieldTwo)
+
+  let realData;
 
   useEffect(() => {
     fetchData();
@@ -56,30 +55,17 @@ function EditView(props) {
   }
 
   function update() {
-    // console.log('OldData:', OldData)
-    // console.log('NewData:', inputValue)
-    // if (OldData === inputValue || inputValue === '') {
-    //   alert('No se han realizado cambios')
-    //   return
-    // } else {
-    //   alert('Se han realizado cambios')
-    //   updateDoc(doc(db, data?.collection, data?.document), {
-    //     [data?.field]: inputValue
-    //   });
-    //   setOldData(inputValue)
-    // }
-
-    if (typeof Data === 'object') {
-      console.log('Object')
-      for (let key in Data) {
-          updateDoc(doc(db, data?.collection, data?.document), {
-            [data?.field]: {
-              ...Data,
-              [key]: inputValue
-            }
-          });
-          setOldData(inputValue)
-      }
+    console.log('OldData:', OldData)
+    console.log('NewData:', inputValue)
+    if (OldData === inputValue || inputValue === '') {
+      alert('No se han realizado cambios')
+      return
+    } else {
+      alert('Se han realizado cambios')
+      updateDoc(doc(db, data?.collection, data?.document), {
+        [data?.field]: inputValue
+      });
+      setOldData(inputValue)
     }
   }
 
@@ -87,47 +73,37 @@ function EditView(props) {
     return <div></div>;
   } else {
     if (typeof Data === 'object') {
-      // alert('Object')
-      let item = Data[data?.fieldTwo]
-  
-      return (
-        <div className='EditView_container'>
-            <div className='EditView_Title'>
-                <span onClick={handleClick}>
-                    <FontAwesomeIcon icon={solid('circle-chevron-left')} />
-                </span>
-                <h1>{data?.name}</h1>
-            </div>
-            {/* Will render depending on the props given */}
-            {Object.keys(item).map((key, index) => {
-              return (
-                <InputCMS key={index} defaultData={item[key]} onDataChange={handleDataChange}/>
-              )
-  
-            })}
-            <Button text='Actualizar' onClick={update}/>
-        </div>
-      )
+      realData = Data[data?.fieldTwo]
     } else {
-  
-      return (
-        <div className='EditView_container'>
-            <div className='EditView_Title'>
-                <span onClick={handleClick}>
-                    <FontAwesomeIcon icon={solid('circle-chevron-left')} />
-                </span>
-                <h1>{data?.name}</h1>
-            </div>
-            {/* Will render depending on the props given */}
-  
-            {/* check if Data is an object with an if clause */}
-            <InputCMS defaultData={Data} onDataChange={handleDataChange}/>
-            <Button text='Actualizar' onClick={update}/>
-        </div>
-      )
+      realData = Data
     }
   }
-  
+
+  return (
+    <div className='EditView_container'>
+      <div className='EditView_Title'>
+        <span onClick={handleClick}>
+          <FontAwesomeIcon icon={solid('circle-chevron-left')} />
+            </span>
+              <h1>{data?.name}</h1>
+            </div>
+            {data?.order.map((key) => {
+              const value = realData[key];
+              return (
+                <InputCMS
+                  defaultData={value}
+                  onDataChange={handleDataChange}
+                  field={key}
+                  key={key}
+                />
+              );
+            })}
+
+            <Button text='Actualizar' onClick={update}/>
+      </div>
+  )
 }
+  
+  
 
 export default EditView

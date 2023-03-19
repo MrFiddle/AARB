@@ -108,6 +108,12 @@ function NosotrosCMS() {
                 field={'comite'}
                 fieldTwo={key}
                 img={value[2]}
+                order={[
+                  'nombre',
+                  'cargo',
+                  'img',
+                  'order'
+                ]}
               />
             )
           })}

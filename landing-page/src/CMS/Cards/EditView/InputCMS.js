@@ -3,7 +3,10 @@ import './InputCMS.css'
 
 function InputCMS(props) {
   return (
-    <textarea className='InputCMS' type="text" defaultValue={props.defaultData} onChange={props.onDataChange}/>
+    <div className='InputCMS'>
+      <h1>{props.field}</h1>
+      <textarea className='InputCMS' type="text" defaultValue={props.defaultData} onChange={props.onDataChange}/>
+    </div>
   )
 }
 
