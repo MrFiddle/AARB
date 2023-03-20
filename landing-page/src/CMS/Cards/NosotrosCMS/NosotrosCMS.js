@@ -114,6 +114,7 @@ function NosotrosCMS() {
                   'img',
                   'order'
                 ]}
+                type="comite"
               />
             )
           })}

@@ -12,39 +12,46 @@ import {
   } from 'firebase/firestore';
   
 import db from '../../firestore';
+import InputCMS from './EditView/InputCMS';
+import Button from '../../components/Button';
 
 function Test() {
 
   const [Data, setData] = useState([]);
+  const [inputValue, setInputValue] = useState({});
 
-  const fetchData = useCallback(async () => {
-    const docSnapshot = await getDoc(doc(db, 'aboutUs', 'aboutUs'));
-    setData(docSnapshot.data()['comite']);
-  }, []);
+  function handleDataChange (name, value) {
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    setInputValue(prevValues => ({
+      ...prevValues,
+      [name]: value,
+    }));
 
-  const sortedData = Object.entries(Data)
-  .sort(([, a], [, b]) => a.order - b.order)
-  .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+  }
 
-  console.log(sortedData);
+  function handleClick () {
+    console.log(inputValue)
+  }
+
 
   return (
     <div>
-        <h1>TEST</h1>
-        {Object.entries(sortedData).map(([key, value]) => {
-            return (
-                <div key={key}>
-                    <h2>{value.cargo}</h2>
-                    <h3>{value.nombre}</h3>
-                    <h3>{value.order}</h3>
-                </div>
-            )
-        })
-        }
+        <InputCMS
+          name="e1"
+          defaultData="Test"
+          onDataChange={(e) => handleDataChange("e1", e.target.value)}/>
+        
+        <InputCMS
+          name="e2"
+          defaultData="Test"
+          onDataChange={(e) => handleDataChange("e2", e.target.value)}/>
+
+        <InputCMS
+          name="e3"
+          defaultData="Test"
+          onDataChange={(e) => handleDataChange("e3", e.target.value)}/>
+        
+        <Button text="test" onClick={handleClick}/>
     </div>
   )
 }
