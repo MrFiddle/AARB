@@ -97,11 +97,17 @@ function EditView(props) {
         console.log(fieldName)
         console.log(fieldData)
 
-        const fieldDataObj = Object.fromEntries(
-          fieldName
-            .filter((_, i) => fieldData[i] !== undefined)
-            .map((key, i) => [key, fieldData[i]])
-        );
+        // const fieldDataObj = Object.fromEntries(
+        //   fieldName
+        //     .filter((_, i) => fieldData[i] !== undefined)
+        //     .map((key, i) => [key, fieldData[i]])
+        // );
+
+        for (let i = 0; i < fieldData.length; i++) {
+          if (fieldData[i] === undefined) {
+            fieldData[i] = realData[fieldName[i]]
+          }
+        }
 
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: {
