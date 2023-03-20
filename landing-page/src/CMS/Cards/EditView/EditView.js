@@ -121,10 +121,18 @@ function EditView(props) {
         });
       }
     } else {
-      console.log(inputValue)
-      updateDoc(doc(db, data?.collection, data?.document), {
-        [data?.field]: inputValue
-      });
+      // console.log('data: ' ,data)
+      // console.log('inputValue: ', inputValue[data['content']])
+      if (Object.keys(inputValue).length === 0) {
+        alert('No se han realizado cambios')
+      } else {
+        console.log('path:', data?.collection, data?.document, data?.field)
+        console.log('value:', inputValue[data['content']])
+        let value = inputValue[data['content']]
+        updateDoc(doc(db, data?.collection, data?.document), {
+          [data?.field]: value
+        });
+      }
     }
   }
 
@@ -169,9 +177,9 @@ function EditView(props) {
             {typeof Data === 'object' && mappedData }
             {typeof Data !== 'object' && (
               <InputCMS
-                name = {realData}
+                name = {data?.content}
                 defaultData={realData}
-                onDataChange={handleDataChange}
+                onDataChange={(e) => handleDataChange(realData, e.target.value)}
               />)}
 
             <Button text='Actualizar' onClick={update}/>
