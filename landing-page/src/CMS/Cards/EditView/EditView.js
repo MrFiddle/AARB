@@ -40,6 +40,9 @@ function EditView(props) {
     setData(docSnapshot.data()[data?.field]);
     setOldData(docSnapshot.data()[data?.field]);
     setDataLoaded(true);
+    if (data?.type === 'comite' || data?.type === 'servicios') {
+      setErasable(true)
+    }
   }, []);
 
   let realData;
@@ -152,10 +155,6 @@ function EditView(props) {
       return <div></div>;
     } else {
 
-      if (data?.type === 'comite' || data?.type === 'servicios') {
-        setErasable(true)
-      }
-
       if (typeof Data === 'object') {
         realData = Data[data?.fieldTwo]
       } else {
@@ -201,7 +200,7 @@ function EditView(props) {
               />)}
 
             <div className='EditView_buttons'>
-              <Button text='Borrar' onClick={deleteE} color={"#FFB4AB"} width={"130px"} margin={"0 15px"}/>
+              {isErasable && <Button text='Borrar' onClick={deleteE} color={"#FFB4AB"} width={"130px"} margin={"0 15px"}/>}
               <Button text='Actualizar' onClick={update} width={"130px"} margin={"0 15px"}/>
             </div>
               
