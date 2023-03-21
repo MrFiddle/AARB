@@ -15,6 +15,7 @@ import {
   getDoc,
   query,
   orderBy,
+  deleteField,
   set
   
 } from 'firebase/firestore';
@@ -31,7 +32,8 @@ function EditView(props) {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [OldData, setOldData] = useState('');
   const [inputValue, setInputValue] = useState({});
-  const [isObject, setIsObject] = useState(false);
+
+  const [isErasable, setErasable] = useState(false)
 
   const fetchData = useCallback(async () => {
     const docSnapshot = await getDoc(doc(db, data?.collection, data?.document));
@@ -61,8 +63,6 @@ function EditView(props) {
       [name]: value,
     }));
   }
-  
-  
 
   function update() {
 
@@ -128,11 +128,34 @@ function EditView(props) {
     }
   }}
 
+  function deleteE() {
+    if (data?.type === 'comite') {
+      const comiteRef = doc(db, 'aboutUs', 'aboutUs');
+      const nestedField = `comite.${data?.name}`
+      updateDoc(comiteRef, {
+        [nestedField]: deleteField()
+      });
+      alert('Cambios realizados con éxito')
+    } else if (data?.type === 'servicios') {
+      const serviciosRef = doc(db, 'servicios', 'servicios');
+      const nestedField = `servicios.${data?.name}`
+      updateDoc(serviciosRef, {
+        [nestedField]: deleteField()
+      });
+      alert('Cambios realizados con éxito')
+    }
+  }
+
   const mappedData = useMemo(() => {
 
     if (!dataLoaded) {
       return <div></div>;
     } else {
+
+      if (data?.type === 'comite' || data?.type === 'servicios') {
+        setErasable(true)
+      }
+
       if (typeof Data === 'object') {
         realData = Data[data?.fieldTwo]
       } else {
@@ -177,11 +200,14 @@ function EditView(props) {
                 onDataChange={(e) => handleDataChange(realData, e.target.value)}
               />)}
 
-            <Button text='Actualizar' onClick={update}/>
+            <div className='EditView_buttons'>
+              <Button text='Borrar' onClick={deleteE} color={"#FFB4AB"} width={"130px"} margin={"0 15px"}/>
+              <Button text='Actualizar' onClick={update} width={"130px"} margin={"0 15px"}/>
+            </div>
+              
       </div>
   )
 }
-  
   
 
 export default EditView

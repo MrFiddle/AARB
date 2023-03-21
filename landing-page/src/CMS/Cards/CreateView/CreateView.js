@@ -40,6 +40,13 @@ function CreateView() {
         img: '',
         order: '',
       })
+    } else if (data?.type == "servicios") {
+      setInputValue({
+        title: '',
+        content: '',
+        img: '',
+        order: '',
+      })
     }
   }, [])
 
@@ -58,8 +65,11 @@ function CreateView() {
   }
 
   function handleAdd() {
+
+    let alertMessage = "";
     if (data?.type == "comite") {
 
+      alertMessage = "Miembro del comité agregado con éxito";
       const docRef = doc(db, 'aboutUs', 'aboutUs');
 
       const newObject = {
@@ -73,7 +83,22 @@ function CreateView() {
 
       // use setDoc to add a new object to the 'comite' map
       setDoc(docRef, { comite: { [inputValue.cargo]: newObject } }, { merge: true });
+
+    } else if (data?.type == 'servicios') {
+      alertMessage = "Servicio agregado con éxito";
+      const docRef = doc(db, 'servicios', 'servicios');
+
+      const newObject = {
+        title: inputValue.title,
+        content: inputValue.content,
+        img: inputValue.img,
+        order: inputValue.order,
+      };
+
+      // use setDoc to add a new object to the 'comite' map
+      setDoc(docRef, { servicios: { [inputValue.title]: newObject } }, { merge: true });
     }
+    alertMessage && alert(alertMessage);
   }
   
   
@@ -107,6 +132,39 @@ function CreateView() {
             key="img"
             onDataChange={(e) => handleDataChange("img", e.target.value)}/>
 
+          <InputCMS
+            name="order"
+            defaultValue={(e) => e.value}
+            placeholder="Orden"
+            field="Orden"
+            key="order"
+            onDataChange={(e) => handleDataChange("order", e.target.value)}/>
+        </div>
+      )
+    } else if (data?.type == "servicios") {
+      return (
+        <div className='CreateView_boxes'>
+          <InputCMS
+            name="title"
+            defaultValue={(e) => e.value}
+            placeholder="Título"
+            field="Título"
+            key="title"
+            onDataChange={(e) => handleDataChange("title", e.target.value)}/>
+          <InputCMS
+            name="content"
+            defaultValue={(e) => e.value}
+            placeholder="Contenido"
+            field="Contenido"
+            key="content"
+            onDataChange={(e) => handleDataChange("content", e.target.value)}/>
+          <InputCMS
+            name="img"
+            defaultValue={(e) => e.value}
+            placeholder="Imagen"
+            field="Imagen"
+            key="img"
+            onDataChange={(e) => handleDataChange("img", e.target.value)}/>
           <InputCMS
             name="order"
             defaultValue={(e) => e.value}

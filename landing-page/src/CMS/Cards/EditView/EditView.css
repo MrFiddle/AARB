@@ -35,3 +35,10 @@
     margin-right: 20px;
     cursor: pointer;
 }
+
+.EditView_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}

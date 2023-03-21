@@ -13,6 +13,8 @@ import './ServiciosCMS.css'
 
 function ServiciosCMS() {
 
+  let navigate = useNavigate();
+
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -27,6 +29,9 @@ function ServiciosCMS() {
     fetchData();
   }, [fetchData]);
 
+  const addServicio = (data) => {
+    navigate('/adminCMS/anadir/coll/doc/field/', {state: {data}});
+  }
 
   let sortedData;
 
@@ -56,7 +61,10 @@ function ServiciosCMS() {
         <h2 className='anadir'>
             SERVICIOS
             <span>
-                <FontAwesomeIcon icon={solid('circle-plus')} />
+                <FontAwesomeIcon icon={solid('circle-plus')} onClick={() => addServicio({
+                  type: 'servicios',
+                  title: 'Servicios'
+                })}/>
             </span>
         </h2>
 
