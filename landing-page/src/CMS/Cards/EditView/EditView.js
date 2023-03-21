@@ -55,6 +55,7 @@ function EditView(props) {
     if (value === undefined) {
       value = inputValue[name] || '';
     }
+
     setInputValue(prevValues => ({
       ...prevValues,
       [name]: value,
@@ -65,32 +66,27 @@ function EditView(props) {
 
   function update() {
 
-    console.log(inputValue)
 
     if (typeof Data === 'object') {
 
       const fieldName = []
       const fieldData = []
 
-      if (data?.type === 'comite') {
-        let i = 0
+      let i = 0
         data?.order.map((key) => {
-          console.log(key)
           const value = realData[key];
 
           fieldName.push(key)
           fieldData.push(inputValue[key])
         })
 
-        console.log('realData:', realData)
-        console.log(fieldName)
-        console.log(fieldData)
-
-        for (let i = 0; i < fieldData.length; i++) {
-          if (fieldData[i] === undefined) {
-            fieldData[i] = realData[fieldName[i]]
-          }
+      for (let i = 0; i < fieldData.length; i++) {
+        if (fieldData[i] === undefined) {
+          fieldData[i] = realData[fieldName[i]]
         }
+      }
+
+      if (data?.type === 'comite') {
 
         const docRef = doc(db, 'aboutUs', 'aboutUs');
 
@@ -101,22 +97,36 @@ function EditView(props) {
           order: fieldData[3]
         };
 
+        console.log('name', data?.name)
         setDoc(docRef, { comite: { [fieldData[1]]: newObject } }, { merge: true });
         alert('Cambios realizados con éxito')
-      }
+        
+
+      } else if (data?.type === 'servicios') {
+
+        const docRef = doc(db, 'servicios', 'servicios');
+
+        const newObject = {
+          title: fieldData[0],
+          content: fieldData[1],
+          img: fieldData[2],
+          order: fieldData[3]
+        };
+
+        setDoc(docRef, { servicios: { [fieldData[0]]: newObject } }, { merge: true });
+        alert('Cambios realizados con éxito')
     } else {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
-        console.log('path:', data?.collection, data?.document, data?.field)
-        console.log('value:', inputValue[data['content']])
         let value = inputValue[data['content']]
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: value
         });
+        alert('Cambios realizados con éxito')
       }
     }
-  }
+  }}
 
   const mappedData = useMemo(() => {
 
@@ -133,6 +143,9 @@ function EditView(props) {
     if (typeof Data === 'object') {
       return data?.order.map((key, index) => {
         const value = realData[key];
+        if (key === 'cargo' || key === 'title') {
+          return null;
+        }
         return (
           <InputCMS
             name={key}
