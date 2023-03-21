@@ -72,7 +72,6 @@ function CreateView() {
       console.log(newObject)
 
       // use setDoc to add a new object to the 'comite' map
-      // updateDoc(docRef, {comite: arrayUnion(newObject)});
       setDoc(docRef, { comite: { [inputValue.cargo]: newObject } }, { merge: true });
     }
   }

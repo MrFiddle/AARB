@@ -9,6 +9,7 @@ import './EditView.css'
 import {
   collection,
   doc,
+  setDoc,
   updateDoc,
   getDocs,
   getDoc,
@@ -91,16 +92,17 @@ function EditView(props) {
           }
         }
 
-        updateDoc(doc(db, data?.collection, data?.document), {
-          [data?.field]: {
-            [data?.fieldTwo]: {
-              [fieldName[0]]: fieldData[0],
-              [fieldName[1]]: fieldData[1],
-              [fieldName[2]]: fieldData[2],
-              [fieldName[3]]: fieldData[3]
-            }
-          }
-        });
+        const docRef = doc(db, 'aboutUs', 'aboutUs');
+
+        const newObject = {
+          nombre: fieldData[0],
+          cargo: fieldData[1],
+          img: fieldData[2],
+          order: fieldData[3]
+        };
+
+        setDoc(docRef, { comite: { [fieldData[1]]: newObject } }, { merge: true });
+        alert('Cambios realizados con éxito')
       }
     } else {
       if (Object.keys(inputValue).length === 0) {
