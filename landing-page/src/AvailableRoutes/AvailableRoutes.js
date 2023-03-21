@@ -18,6 +18,7 @@ import NosotrosCMS from '../CMS/Cards/NosotrosCMS/NosotrosCMS';
 import ServiciosCMS from '../CMS/Cards/ServiciosCMS/ServiciosCMS';
 import NoticiasCMS from '../CMS/Cards/NoticiasCMS/NoticiasCMS';
 import EditView from '../CMS/Cards/EditView/EditView';
+import CreateView from '../CMS/Cards/CreateView/CreateView';
 import Test from '../CMS/Cards/Test';
 
 function AvailableRoutes() {
@@ -60,6 +61,7 @@ function AvailableRoutes() {
           <Route path='servicios' element={<ServiciosCMS />}/>
           <Route path='noticias' element={<NoticiasCMS />}/>
           <Route path='editar/:coll/:doc/:field/*' element={<EditView />}/>
+          <Route path='anadir/:coll/:doc/:field/*' element={<CreateView />}/>
         </Route>
         <Route path="test" element={<Test />} />
 

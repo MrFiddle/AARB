@@ -63,18 +63,6 @@ function EditView(props) {
   
 
   function update() {
-    // console.log('OldData:', OldData)
-    // console.log('NewData:', inputValue)
-    // if (OldData === inputValue || inputValue === '') {
-    //   alert('No se han realizado cambios')
-    //   return
-    // } else {
-    //   alert('Se han realizado cambios')
-    //   updateDoc(doc(db, data?.collection, data?.document), {
-    //     [data?.field]: inputValue
-    //   });
-    //   setOldData(inputValue)
-    // }
 
     console.log(inputValue)
 
@@ -97,12 +85,6 @@ function EditView(props) {
         console.log(fieldName)
         console.log(fieldData)
 
-        // const fieldDataObj = Object.fromEntries(
-        //   fieldName
-        //     .filter((_, i) => fieldData[i] !== undefined)
-        //     .map((key, i) => [key, fieldData[i]])
-        // );
-
         for (let i = 0; i < fieldData.length; i++) {
           if (fieldData[i] === undefined) {
             fieldData[i] = realData[fieldName[i]]
@@ -121,8 +103,6 @@ function EditView(props) {
         });
       }
     } else {
-      // console.log('data: ' ,data)
-      // console.log('inputValue: ', inputValue[data['content']])
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
@@ -169,8 +149,8 @@ function EditView(props) {
   return (
     <div className='EditView_container'>
       <div className='EditView_Title'>
-        <span onClick={handleClick}>
-          <FontAwesomeIcon icon={solid('circle-chevron-left')} />
+        <span>
+          <FontAwesomeIcon icon={solid('circle-chevron-left')} onClick={handleClick}/>
             </span>
               <h1>{data?.name}</h1>
             </div>

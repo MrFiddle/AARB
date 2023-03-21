@@ -5,6 +5,7 @@ import {
   query,
   orderBy
 } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 import db from '../../../firestore';
 
@@ -15,6 +16,8 @@ import './NosotrosCMS.css'
 
 function NosotrosCMS() {
 
+  let navigate = useNavigate();
+
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -24,6 +27,10 @@ function NosotrosCMS() {
     setData(data);
     setDataLoaded(true);
   }, []);
+
+  const addDirectivo = (data) => {
+    navigate('/adminCMS/anadir/coll/doc/field/', {state: {data}});
+  }
 
   useEffect(() => {
     fetchData();
@@ -39,6 +46,8 @@ function NosotrosCMS() {
   .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
     console.log(sortedData)
   }
+
+  console.log('Data', Data)
 
   return (
     <div className='NosotrosCMS_Container'>
@@ -78,27 +87,16 @@ function NosotrosCMS() {
         <h2 className='anadir'>
           COMITE DIRECTIVO
           <span>
-            <FontAwesomeIcon icon={solid('circle-plus')} />
+            <FontAwesomeIcon icon={solid('circle-plus')} onClick={() => {
+              addDirectivo({
+                type: 'comite',
+                title: 'Directivo'
+              })
+            }}/>
           </span>
         </h2>
 
-        {/* <CMS_Card name="Presidente" content="Gonzalo Vizcarra"/> */}
-        {/* {Object.keys(sortedData).map((key) => {
-          const [nombre, cargo, img] = sortedData[key];
-          return (
-            <CMS_Card
-              name={cargo}
-              content={nombre}
-              collection='aboutUs'
-              document='aboutUs'
-              field={'comite'}
-              fieldTwo={`${key}`}
-              img={img}
-            />
-          )})} */}
-
           {Object.entries(sortedData).map(([key, value]) => {
-            console.log(key)
             return (
               <CMS_Card
                 name={value.cargo}
