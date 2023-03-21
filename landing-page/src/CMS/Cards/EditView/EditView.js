@@ -127,9 +127,20 @@ function EditView(props) {
           [data?.field]: value
         });
         alert('Cambios realizados con éxito')
+        }
+      }
+    } else {
+      if (Object.keys(inputValue).length === 0) {
+        alert('No se han realizado cambios')
+      } else {
+        let value = inputValue[data['content']]
+        updateDoc(doc(db, data?.collection, data?.document), {
+          [data?.field]: value
+        });
+        alert('Cambios realizados con éxito')
       }
     }
-  }}
+  }
 
   function deleteE() {
     if (data?.type === 'comite') {
