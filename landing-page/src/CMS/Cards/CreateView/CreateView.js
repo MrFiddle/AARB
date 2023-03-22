@@ -74,20 +74,39 @@ function CreateView() {
 
   function handleAdd() {
 
+    function isValidUrl(url) {
+      if (url === ''){ return url; }
+      const pattern = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
+      return pattern.test(url);
+    }
+
+    function getDriveImageUrl(url) {
+      const fileIdMatch = url.match(/\/file\/d\/(.+?)\//);
+      if (fileIdMatch) {
+        const fileId = fileIdMatch[1];
+        return `https://drive.google.com/uc?id=${fileId}`;
+      } else {
+        return url;
+      }
+    }
+
     let alertMessage = "";
     if (data?.type == "comite") {
 
       alertMessage = "Miembro del comité agregado con éxito";
       const docRef = doc(db, 'aboutUs', 'aboutUs');
 
+      if (isValidUrl(inputValue.img) === false) {
+        alert('La url de la imagen no es válida')
+        return;
+      }
+
       const newObject = {
         nombre: inputValue.nombre,
         cargo: inputValue.cargo,
-        img: inputValue.img,
+        img: getDriveImageUrl(inputValue.img),
         order: inputValue.order,
       };
-
-      console.log(newObject)
 
       // use setDoc to add a new object to the 'comite' map
       setDoc(docRef, { comite: { [inputValue.cargo]: newObject } }, { merge: true });
@@ -96,10 +115,15 @@ function CreateView() {
       alertMessage = "Servicio agregado con éxito";
       const docRef = doc(db, 'servicios', 'servicios');
 
+      if (isValidUrl(inputValue.img) === false) {
+        alert('La url de la imagen no es válida')
+        return;
+      }
+
       const newObject = {
         title: inputValue.title,
         content: inputValue.content,
-        img: inputValue.img,
+        img: getDriveImageUrl(inputValue.img),
         order: inputValue.order,
       };
 
@@ -110,16 +134,18 @@ function CreateView() {
       alertMessage = "Noticia agregada con éxito";
       const docRef = collection(db, 'news');
 
+      if (isValidUrl(inputValue.img) === false) {
+        alert('La url de la imagen no es válida')
+        return;
+      }
+
       const newObject = {
         titulo: inputValue.title,
         autor: inputValue.autor,
         contenido: inputValue.content,
-        img: inputValue.img,
-        // add current date in timestamp format
+        img: getDriveImageUrl(inputValue.img),
         fecha: serverTimestamp(),
       };
-
-      // setDoc(docRef, newObject, { merge: true });
       // create doc with random id and add newObject as data
       addDoc(docRef, newObject);
     }
