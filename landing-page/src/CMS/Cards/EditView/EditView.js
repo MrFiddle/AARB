@@ -16,7 +16,8 @@ import {
   query,
   orderBy,
   deleteField,
-  set
+  set,
+  deleteDoc
   
 } from 'firebase/firestore';
 
@@ -26,7 +27,7 @@ function EditView(props) {
 
   let navigate = useNavigate();
   const location = useLocation();
-  const data = location.state?.data;
+  var data = location.state?.data;
 
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -36,11 +37,21 @@ function EditView(props) {
   const [isErasable, setErasable] = useState(false)
 
   const fetchData = useCallback(async () => {
-    const docSnapshot = await getDoc(doc(db, data?.collection, data?.document));
-    setData(docSnapshot.data()[data?.field]);
-    setOldData(docSnapshot.data()[data?.field]);
-    setDataLoaded(true);
-    if (data?.type === 'comite' || data?.type === 'servicios') {
+
+    if (data?.type === 'noticia') {
+      // get docs of collection called news
+      const querySnapshot = await getDocs(collection(db, 'news'));
+      const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setData(docs);
+      setDataLoaded(true);
+    } else {
+      const docSnapshot = await getDoc(doc(db, data?.collection, data?.document));
+      setData(docSnapshot.data()[data?.field]);
+      setOldData(docSnapshot.data()[data?.field]);
+      setDataLoaded(true);
+    }
+
+    if (data?.type === 'comite' || data?.type === 'servicios' || data?.type === 'noticia') {
       setErasable(true)
     }
   }, []);
@@ -50,6 +61,7 @@ function EditView(props) {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
 
   function handleClick () {
     {/* function to go to the previous route */}
@@ -69,6 +81,20 @@ function EditView(props) {
 
   function update() {
 
+    function isValidUrl(url) {
+      const pattern = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
+      return pattern.test(url);
+    }
+
+    function getDriveImageUrl(url) {
+      const fileIdMatch = url.match(/\/file\/d\/(.+?)\//);
+      if (fileIdMatch) {
+        const fileId = fileIdMatch[1];
+        return `https://drive.google.com/uc?id=${fileId}`;
+      } else {
+        return url;
+      }
+    }
 
     if (typeof Data === 'object') {
 
@@ -93,14 +119,18 @@ function EditView(props) {
 
         const docRef = doc(db, 'aboutUs', 'aboutUs');
 
+        if (isValidUrl(fieldData[2]) === false) {
+          alert('La url de la imagen no es válida')
+          return
+        }
+
         const newObject = {
           nombre: fieldData[0],
           cargo: fieldData[1],
-          img: fieldData[2],
+          img: getDriveImageUrl(fieldData[2]),
           order: fieldData[3]
         };
 
-        console.log('name', data?.name)
         setDoc(docRef, { comite: { [fieldData[1]]: newObject } }, { merge: true });
         alert('Cambios realizados con éxito')
         
@@ -109,16 +139,41 @@ function EditView(props) {
 
         const docRef = doc(db, 'servicios', 'servicios');
 
+        if (isValidUrl(fieldData[2]) === false) {
+          alert('La url de la imagen no es válida')
+          return
+        }
+
         const newObject = {
           title: fieldData[0],
           content: fieldData[1],
-          img: fieldData[2],
+          img: getDriveImageUrl(fieldData[2]),
           order: fieldData[3]
         };
 
         setDoc(docRef, { servicios: { [fieldData[0]]: newObject } }, { merge: true });
         alert('Cambios realizados con éxito')
-    } else {
+      } else if (data?.type === 'noticia') {
+        
+        const docRef = doc(db, 'news', data?.document);
+        if (isValidUrl(fieldData[4]) === false) {
+          alert('La url de la imagen no es válida')
+          return
+        }
+
+        const newObject = {
+          titulo: fieldData[0],
+          autor: fieldData[1],
+          contenido: fieldData[2],
+          img: getDriveImageUrl(fieldData[4]),
+        };
+
+
+        // updateDoc(docRef, { newObject }, { merge: true });
+        setDoc(docRef, newObject, { merge: true });
+        alert('Cambios realizados con éxito')
+
+      } else {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
@@ -157,6 +212,10 @@ function EditView(props) {
         [nestedField]: deleteField()
       });
       alert('Cambios realizados con éxito')
+    } else if (data?.type === 'noticia') {
+      const newsRef = doc(db, 'news', data?.document);
+      deleteDoc(newsRef);
+      alert('Cambios realizados con éxito')
     }
   }
 
@@ -176,7 +235,7 @@ function EditView(props) {
     if (typeof Data === 'object') {
       return data?.order.map((key, index) => {
         const value = realData[key];
-        if (key === 'cargo' || key === 'title') {
+        if (key === 'cargo' || key === 'title' || key === 'fecha') {
           return null;
         }
         return (

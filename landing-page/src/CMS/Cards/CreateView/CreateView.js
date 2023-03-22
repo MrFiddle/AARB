@@ -16,7 +16,8 @@ import {
   query,
   orderBy,
   set,
-  setDoc
+  setDoc,
+  serverTimestamp
   
 } from 'firebase/firestore';
 
@@ -46,6 +47,13 @@ function CreateView() {
         content: '',
         img: '',
         order: '',
+      })
+    } else if (data?.type == "noticia") {
+      setInputValue({
+        title: '',
+        autor: '',
+        content: '',
+        img: '',
       })
     }
   }, [])
@@ -97,6 +105,23 @@ function CreateView() {
 
       // use setDoc to add a new object to the 'comite' map
       setDoc(docRef, { servicios: { [inputValue.title]: newObject } }, { merge: true });
+
+    } else if (data?.type == 'noticia') {
+      alertMessage = "Noticia agregada con éxito";
+      const docRef = collection(db, 'news');
+
+      const newObject = {
+        titulo: inputValue.title,
+        autor: inputValue.autor,
+        contenido: inputValue.content,
+        img: inputValue.img,
+        // add current date in timestamp format
+        fecha: serverTimestamp(),
+      };
+
+      // setDoc(docRef, newObject, { merge: true });
+      // create doc with random id and add newObject as data
+      addDoc(docRef, newObject);
     }
     alertMessage && alert(alertMessage);
   }
@@ -172,6 +197,39 @@ function CreateView() {
             field="Orden"
             key="order"
             onDataChange={(e) => handleDataChange("order", e.target.value)}/>
+        </div>
+      )
+    } else if (data?.type == "noticia") {
+      return (
+        <div className='CreateView_boxes'>
+          <InputCMS
+            name="title"
+            defaultValue={(e) => e.value}
+            placeholder="Título"
+            field="Título"
+            key="title"
+            onDataChange={(e) => handleDataChange("title", e.target.value)}/>
+          <InputCMS
+            name="autor"
+            defaultValue={(e) => e.value}
+            placeholder="Autor"
+            field="Autor"
+            key="autor"
+            onDataChange={(e) => handleDataChange("autor", e.target.value)}/>
+          <InputCMS
+            name="content"
+            defaultValue={(e) => e.value}
+            placeholder="Contenido"
+            field="Contenido"
+            key="content"
+            onDataChange={(e) => handleDataChange("content", e.target.value)}/>
+          <InputCMS
+            name="img"
+            defaultValue={(e) => e.value}
+            placeholder="Imagen"
+            field="Imagen"
+            key="img"
+            onDataChange={(e) => handleDataChange("img", e.target.value)}/>
         </div>
       )
     }

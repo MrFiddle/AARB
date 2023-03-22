@@ -2,8 +2,6 @@ import React, {useState, useCallback, useEffect } from 'react'
 import {
   collection,
   getDocs,
-  query,
-  orderBy
 } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
