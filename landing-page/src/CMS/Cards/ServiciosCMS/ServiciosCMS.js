@@ -14,6 +14,7 @@ import './ServiciosCMS.css'
 function ServiciosCMS() {
 
   let navigate = useNavigate();
+  let route = "/adminCMS/servicios"
 
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -54,6 +55,7 @@ function ServiciosCMS() {
           collection="servicios"
           document="servicios"
           field="bg_img"
+          route={route}
         />
       </section>
       
@@ -63,7 +65,8 @@ function ServiciosCMS() {
             <span>
                 <FontAwesomeIcon icon={solid('circle-plus')} onClick={() => addServicio({
                   type: 'servicios',
-                  title: 'Servicios'
+                  title: 'Servicios',
+                  route: route
                 })}/>
             </span>
         </h2>
@@ -85,6 +88,7 @@ function ServiciosCMS() {
                 'order'
               ]}
               type="servicios"
+              route={route}
             />
           )})
         }
@@ -100,6 +104,7 @@ function ServiciosCMS() {
           collection="servicios"
           document="servicios"
           field="contact_email"
+          route={route}
           />
 
       </section>

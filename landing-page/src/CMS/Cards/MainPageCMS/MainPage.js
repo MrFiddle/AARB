@@ -13,6 +13,8 @@ import db from '../../../firestore';
 
 function MainPage() {
 
+  let route = "/adminCMS/home"
+
   const [Data, setData] = useState([]);
   const [Footer, setFooter] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -45,15 +47,16 @@ function MainPage() {
           content={Data[2]['background_image']}
           collection="mainPage"
           document="header"
-          field="background_image"/>
-
+          field="background_image"
+          route={route}/>
 
         <CMS_Card
           name="Slogan"
           content={Data[2]['org_slogan']}
           collection="mainPage"
           document="header"
-          field="org_slogan"/>
+          field="org_slogan"
+          route={route}/>
 
       </section>
 
@@ -66,14 +69,16 @@ function MainPage() {
           content={Data[0]['content']}
           collection="mainPage"
           document="aboutUs"
-          field="content"/>
+          field="content"
+          route={route}/>
 
         <CMS_Card
           name="Imagen"
           content={Data[0]['image']}
           collection="mainPage"
           document="aboutUs"
-          field="image"/>
+          field="image"
+          route={route}/>
 
       </section>
 
@@ -86,49 +91,56 @@ function MainPage() {
           content={Data[1]['address']}
           collection="mainPage"
           document="contact"
-          field="address"/>
+          field="address"
+          route={route}/>
 
         <CMS_Card
           name="Horario"
           content={Data[1]['horario']}
           collection="mainPage"
           document="contact"
-          field="horario"/>
+          field="horario"
+          route={route}/>
         
         <CMS_Card
           name="Teléfono"
           content={Data[1]['phone']}
           collection="mainPage"
           document="contact"
-          field="phone"/>
+          field="phone"
+          route={route}/>
         
         <CMS_Card
           name="Email"
           content={Data[1]['email']}
           collection="mainPage"
           document="contact"
-          field="email"/>
+          field="email"
+          route={route}/>
 
         <CMS_Card
           name="Facebook"
           content={Data[1]['facebook']}
           collection="mainPage"
           document="contact"
-          field="facebook"/>
+          field="facebook"
+          route={route}/>
 
         <CMS_Card
           name="WhatsApp"
           content={Data[1]['whatsapp']}
           collection="mainPage"
           document="contact"
-          field="whatsapp"/>
+          field="whatsapp"
+          route={route}/>
 
         <CMS_Card
           name="Google Maps"
           content={Data[1]['maps']}
           collection="mainPage"
           document="contact"
-          field="maps"/>
+          field="maps"
+          route={route}/>
 
       </section>
 
@@ -141,14 +153,16 @@ function MainPage() {
           content={Data[4]['content']}
           collection="mainPage"
           document="services"
-          field="content"/>
+          field="content"
+          route={route}/>
         
         <CMS_Card
           name="Imagen"
           content={Data[4]['image']}
           collection="mainPage"
           document="services"
-          field="image"/>
+          field="image"
+          route={route}/>
       </section>
 
       {/* Footer */}
@@ -160,7 +174,8 @@ function MainPage() {
           content={Footer[0]['content']}
           collection="footer"
           document="content"
-          field="content"/>
+          field="content"
+          route={route}/>
       </section>
 
     </div>

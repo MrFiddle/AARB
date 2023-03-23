@@ -69,7 +69,7 @@ function CreateView() {
 
   function handleClick () {
     {/* function to go to the previous route */}
-    navigate(-1)
+    navigate(data?.route)
   }
 
   function handleAdd() {
@@ -150,6 +150,7 @@ function CreateView() {
       addDoc(docRef, newObject);
     }
     alertMessage && alert(alertMessage);
+    handleClick();
   }
   
   

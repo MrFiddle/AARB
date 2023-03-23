@@ -15,6 +15,7 @@ import './NoticiasCMS.css'
 
 function NoticiasCMS() {
 
+  let route = "/adminCMS/noticias"
   let navigate = useNavigate();
 
   let [Data, setData] = useState([]);
@@ -54,7 +55,8 @@ function NoticiasCMS() {
                 <FontAwesomeIcon icon={solid('circle-plus')} onClick={() => {
                   handleAdd({
                     type: 'noticia',
-                    title: 'Noticia'
+                    title: 'Noticia',
+                    route: route
                   })
                 }}/>
             </span>
@@ -78,6 +80,7 @@ function NoticiasCMS() {
                 'fecha',
                 'img',
               ]}
+              route={route}
             />
           )
         })}

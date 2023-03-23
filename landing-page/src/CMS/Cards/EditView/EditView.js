@@ -28,6 +28,7 @@ function EditView(props) {
   let navigate = useNavigate();
   const location = useLocation();
   var data = location.state?.data;
+  console.log('data', data);
 
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -57,6 +58,8 @@ function EditView(props) {
   }, []);
 
   let realData;
+  console.log('Data', Data);
+  console.log('data?.fieldTwo', data?.fieldTwo);
 
   useEffect(() => {
     fetchData();
@@ -65,7 +68,7 @@ function EditView(props) {
 
   function handleClick () {
     {/* function to go to the previous route */}
-    navigate(-1)
+    navigate(data?.route)
   }
 
   function handleDataChange(name, value) {
@@ -82,6 +85,9 @@ function EditView(props) {
   function update() {
 
     function isValidUrl(url) {
+      if (url === '') {
+        return url;
+      }
       const pattern = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
       return pattern.test(url);
     }
@@ -131,7 +137,7 @@ function EditView(props) {
           order: fieldData[3]
         };
 
-        setDoc(docRef, { comite: { [fieldData[1]]: newObject } }, { merge: true });
+        setDoc(docRef, { comite: { [data?.fieldTwo]: newObject } }, { merge: true });
         alert('Cambios realizados con éxito')
         
 
@@ -151,7 +157,7 @@ function EditView(props) {
           order: fieldData[3]
         };
 
-        setDoc(docRef, { servicios: { [fieldData[0]]: newObject } }, { merge: true });
+        setDoc(docRef, { servicios: { [data?.fieldTwo]: newObject } }, { merge: true });
         alert('Cambios realizados con éxito')
       } else if (data?.type === 'noticia') {
         
@@ -195,6 +201,8 @@ function EditView(props) {
         alert('Cambios realizados con éxito')
       }
     }
+    // go back to the previous route
+    handleClick()
   }
 
   function deleteE() {
@@ -207,7 +215,7 @@ function EditView(props) {
       alert('Cambios realizados con éxito')
     } else if (data?.type === 'servicios') {
       const serviciosRef = doc(db, 'servicios', 'servicios');
-      const nestedField = `servicios.${data?.name}`
+      const nestedField = `servicios.${data?.fieldTwo}`
       updateDoc(serviciosRef, {
         [nestedField]: deleteField()
       });
@@ -217,6 +225,7 @@ function EditView(props) {
       deleteDoc(newsRef);
       alert('Cambios realizados con éxito')
     }
+    handleClick()
   }
 
   const mappedData = useMemo(() => {

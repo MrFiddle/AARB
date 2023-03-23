@@ -14,6 +14,7 @@ import './NosotrosCMS.css'
 
 function NosotrosCMS() {
 
+  let route = "/adminCMS/nosotros"
   let navigate = useNavigate();
 
   const [Data, setData] = useState([]);
@@ -57,7 +58,8 @@ function NosotrosCMS() {
           content={Data[0]['bg_image']}
           collection="aboutUs"
           document="aboutUs"
-          field="bg_image"/>
+          field="bg_image"
+          route={route}/>
 
       </section>
 
@@ -70,14 +72,16 @@ function NosotrosCMS() {
           content={Data[0]['img1']}
           collection='aboutUs'
           document='aboutUs'
-          field='img1'/>
+          field='img1'
+          route={route}/>
 
         <CMS_Card
           name="Contenido"
           content={Data[0]['content']}
           collection='aboutUs'
           document='aboutUs'
-          field='content'/>
+          field='content'
+          route={route}/>
 
       </section>
 
@@ -88,7 +92,8 @@ function NosotrosCMS() {
             <FontAwesomeIcon icon={solid('circle-plus')} onClick={() => {
               addDirectivo({
                 type: 'comite',
-                title: 'Directivo'
+                title: 'Directivo',
+                route: route
               })
             }}/>
           </span>
@@ -111,7 +116,7 @@ function NosotrosCMS() {
                   'order'
                 ]}
                 type="comite"
-              />
+                route={route}/>
             )
           })}
 

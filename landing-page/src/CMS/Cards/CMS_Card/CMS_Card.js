@@ -32,7 +32,8 @@ function CMS_Card(props) {
             name: props.name,
             content: props.content,
             order: props.order,
-            type: props.type
+            type: props.type,
+            route: props.route
            } )
         }>
            <FontAwesomeIcon icon={solid('edit')} />
