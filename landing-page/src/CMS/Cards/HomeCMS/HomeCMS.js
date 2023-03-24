@@ -5,6 +5,7 @@ import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro' /
 import './HomeCMS.css'
 
 function HomeCMS() {
+  localStorage.setItem('currentRoute', 'HomeCMS')
   return (
     <div className='HomeCMS_Container'>
         <div className='HomeCMS_title'>

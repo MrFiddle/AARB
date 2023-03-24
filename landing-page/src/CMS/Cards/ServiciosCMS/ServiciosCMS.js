@@ -13,6 +13,7 @@ import './ServiciosCMS.css'
 
 function ServiciosCMS() {
 
+  localStorage.setItem('currentRoute', 'ServiciosCMS')
   let navigate = useNavigate();
   let route = "/adminCMS/servicios"
 

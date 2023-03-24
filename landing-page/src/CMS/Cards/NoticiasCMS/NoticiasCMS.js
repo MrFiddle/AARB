@@ -15,6 +15,7 @@ import './NoticiasCMS.css'
 
 function NoticiasCMS() {
 
+  localStorage.setItem('currentRoute', 'NoticiasCMS')
   let route = "/adminCMS/noticias"
   let navigate = useNavigate();
 

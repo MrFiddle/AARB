@@ -14,6 +14,7 @@ import './NosotrosCMS.css'
 
 function NosotrosCMS() {
 
+  localStorage.setItem('currentRoute', 'NosotrosCMS')
   let route = "/adminCMS/nosotros"
   let navigate = useNavigate();
 

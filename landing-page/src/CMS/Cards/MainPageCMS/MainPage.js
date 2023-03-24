@@ -13,6 +13,7 @@ import db from '../../../firestore';
 
 function MainPage() {
 
+  localStorage.setItem('currentRoute', 'MainPageCMS')
   let route = "/adminCMS/home"
 
   const [Data, setData] = useState([]);
