@@ -3,7 +3,7 @@ import './Button.css'
 
 function Button(props) {
   return (
-    <div style={{width: props.width}} className='button' onClick={props.onClick}>
+    <div style={{width: props.width, backgroundColor: props.color, margin: props.margin}} className='button' onClick={props.onClick}>
         <p>{props.text}</p>
     </div>
   )

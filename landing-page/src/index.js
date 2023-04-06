@@ -1,46 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter  } from "react-router-dom";
 import './index.css';
-
-import Main from './mainPage/Main';
-import Nosotros from './Nosotros/Nosotros';
-import Servicios from './Servicios/Servicios';
-import Noticias from './Noticias/Noticias';
-import NoticiaV from './NoticiaV/NoticiaV';
-import Error404 from './components/Error404';
 
 import reportWebVitals from './reportWebVitals';
 import './firestore'
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    errorElement: <Error404/>
-  },
-  {
-    path: "/nosotros",
-    element: <Nosotros />,
-  },
-  {
-    path: "/servicios",
-    element: <Servicios />,
-  },
-  {
-    path: "/noticias",
-    element: <Noticias />,
-  },
-  {
-    path: "/noticias/:id",
-    element: <NoticiaV />,
-  }
-]);
+import AvailableRoutes from './AvailableRoutes/AvailableRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <BrowserRouter>
+      <AvailableRoutes />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
