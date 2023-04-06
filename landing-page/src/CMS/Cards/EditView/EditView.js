@@ -183,7 +183,7 @@ function EditView(props) {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
-        let value = inputValue[data['content']]
+        let value = getDriveImageUrl(inputValue[data['content']])
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: value
         });
@@ -194,7 +194,7 @@ function EditView(props) {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
-        let value = inputValue[data['content']]
+        let value = getDriveImageUrl(inputValue[data['content']])
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: value
         });
