@@ -52,7 +52,7 @@ function NosotrosCMS() {
   return (
     <div className='NosotrosCMS_Container'>
     <section className='CMS__headers'>
-        <h2>HEADER</h2>
+        <h2>ENCABEZADO</h2>
 
         <CMS_Card
           name="Imagen"
