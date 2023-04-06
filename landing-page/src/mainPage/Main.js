@@ -105,7 +105,20 @@ function Main() {
 
     <div className='main__component'>
         <Nav headerHeight = {clientHeight}/>
-        <header className='main_header' ref={myDivRef}>
+        <header className='main_header' ref={myDivRef}
+        
+        style={{
+          background: `linear-gradient(
+              rgba(0, 0, 0, 0.6), 
+              rgba(0, 0, 0, 0.6)
+          ),
+          url(${background_image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        
+        >
 
             <img src={AARB_Logo_Color} alt="logo" id="hero__logo"/>
             <p id="hero__slogan">{orgSlogan}</p>
