@@ -61,7 +61,20 @@ function Nosotros() {
   return (
     <div>
       <Nav headerHeight={clientHeight}/>
-      <header className='nosotros_header' ref={myDivRef}>
+      <header className='nosotros_header' ref={myDivRef}
+      
+      style={{
+        background: `linear-gradient(
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
+        ),
+        url(${Data[0]?.bg_image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+      
+      >
         <span>
           <FontAwesomeIcon icon={solid('people-group')} />
         </span>

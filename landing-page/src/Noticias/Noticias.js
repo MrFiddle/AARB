@@ -54,7 +54,18 @@ function Noticias() {
   return (
     <div>
         <Nav headerHeight = {clientHeight}/>
-        <header className='noticias_header' ref={myDivRef}>
+        <header className='noticias_header' ref={myDivRef}
+        
+        style={{
+          background: `linear-gradient(
+              rgba(0, 0, 0, 0.6), 
+              rgba(0, 0, 0, 0.6)
+          ),
+          url(https://st.depositphotos.com/1032463/1373/i/600/depositphotos_13732950-stock-photo-background-of-old-vintage-newspapers.jpg)`,
+          backgroundPosition: 'center',
+        }}
+        
+        >
             <span>
                 <FontAwesomeIcon icon={solid('newspaper')}/>
             </span>
