@@ -84,6 +84,14 @@ function NosotrosCMS() {
           field='content'
           route={route}/>
 
+        <CMS_Card
+          name="Organigrama"
+          content={Data[0]['organigrama']}
+          collection='aboutUs'
+          document='aboutUs'
+          field='organigrama'
+          route={route}/>
+
       </section>
 
       <section className='CMS__headers'>

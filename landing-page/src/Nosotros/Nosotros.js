@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import { Carousel } from '@trendyol-js/react-carousel';
 import ComiteMember from './ComiteMember';
-import Nav from '../navBar/Nav'
-import { useHeaderHeight } from '../components/HeaderHeight';
-import './Nosotros.css'
+import Nav from '../navBar/Nav';
+import Button from '../components/Button';
+import './Nosotros.css';
 import {
   collection,
   getDocs,
@@ -47,6 +47,7 @@ function Nosotros() {
   image = Data[0]?.img1;
 
   let comite = Data[0]?.comite;
+  let organigrama = Data[0]?.organigrama;
   let sortedData;
 
   if (!dataLoaded) {
@@ -103,19 +104,22 @@ function Nosotros() {
               useArrowKeys={true}
               >
 
-            {Object.entries(sortedData).map(([key, value]) => {
-              return (
-                <ComiteMember
-                  key={key}
-                  nombre={value.nombre}
-                  cargo={value.cargo}
-                  img={value.img}
-                  />
-              )
-            })
-            }
+                {Object.entries(sortedData).map(([key, value]) => {
+                  return (
+                    <ComiteMember
+                      key={key}
+                      nombre={value.nombre}
+                      cargo={value.cargo}
+                      img={value.img}
+                      />
+                  )
+                })
+                }
 
               </Carousel>
+
+              <Button text="Ver organigrama" width="200px" margin="30px auto" onClick={() => window.open(organigrama, '_blank')}/>
+
         </section>
       </main>
       <Footer/>
