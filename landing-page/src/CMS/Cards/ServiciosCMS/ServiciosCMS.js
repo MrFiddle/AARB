@@ -43,7 +43,6 @@ function ServiciosCMS() {
     sortedData = Object.entries(Data[0].servicios)
   .sort(([, a], [, b]) => a.order - b.order)
   .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
-    console.log(sortedData)
   }
 
   return (

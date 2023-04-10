@@ -12,7 +12,6 @@ function CMS_Card(props) {
     if (props.fieldTwo) {
       navigate('/adminCMS/editar/' + props.collection + '/' + props.document + '/' + props.field + '/' + props.fieldTwo, {state: {data}})
     } else {
-      console.log('no fieldtwo')
       navigate('/adminCMS/editar/' + props.collection + '/' + props.document + '/' + props.field, {state: {data}})
     }
   }

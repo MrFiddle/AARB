@@ -1,8 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import {
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut,
     onAuthStateChanged,
     getIdToken,
     

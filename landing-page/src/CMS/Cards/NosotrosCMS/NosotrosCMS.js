@@ -44,10 +44,7 @@ function NosotrosCMS() {
     sortedData = Object.entries(Data[0].comite)
   .sort(([, a], [, b]) => a.order - b.order)
   .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
-    console.log(sortedData)
   }
-
-  console.log('Data', Data)
 
   return (
     <div className='NosotrosCMS_Container'>

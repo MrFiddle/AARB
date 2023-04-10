@@ -56,7 +56,6 @@ function Nosotros() {
     sortedData = Object.entries(comite)
     .sort(([, a], [, b]) => a.order - b.order)
     .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
-    console.log(sortedData)
   }
 
   return (

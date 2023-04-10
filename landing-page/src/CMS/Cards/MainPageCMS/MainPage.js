@@ -5,8 +5,6 @@ import './MainPage.css'
 import {
   collection,
   getDocs,
-  query,
-  orderBy
 } from 'firebase/firestore';
 
 import db from '../../../firestore';
