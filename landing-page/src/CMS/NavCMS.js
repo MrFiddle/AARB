@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, useLocation, useResolvedPath } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import './NavCMS.css'
@@ -16,12 +16,10 @@ function NavCMS() {
   return (
     <div className='NavCMS'>
         <div className='NavCMS_Container'>
-          {/* <Link to='/adminCMS' className='NavCMS_item especial'> */}
           <Link to='/adminCMS' className={`NavCMS_item ${currentRoute === 'HomeCMS' ? 'especial' : ''}`}>
             <h1>Inicio</h1>
           </Link>
 
-          {/* <Link to='home' className='NavCMS_item'> */}
           <Link to='home' className={`NavCMS_item ${currentRoute === 'MainPageCMS' ? 'especial' : ''}`}>
             <span>
               <FontAwesomeIcon icon={solid('home')} />

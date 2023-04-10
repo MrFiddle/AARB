@@ -9,7 +9,6 @@ import {
 import db from '../firestore'
 
 import Nav from '../navBar/Nav';
-import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer';
 import Card from '../components/Card';
 

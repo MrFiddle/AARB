@@ -12,7 +12,6 @@ import db from '../firestore'
 import { useNavigate } from 'react-router-dom';
 
 import Nav from '../navBar/Nav'
-import { useHeaderHeight } from '../components/HeaderHeight';
 import Footer from '../footer/Footer'
 import Card from '../components/Card'
 import Button from '../components/Button'
@@ -87,7 +86,6 @@ function Main() {
 	}
 
     function handleClick(newId) {
-        // window.location.href = '/noticias/' + newId;
         history('/noticias/' + newId);
     }
 

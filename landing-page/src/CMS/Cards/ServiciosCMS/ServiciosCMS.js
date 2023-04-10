@@ -43,13 +43,12 @@ function ServiciosCMS() {
     sortedData = Object.entries(Data[0].servicios)
   .sort(([, a], [, b]) => a.order - b.order)
   .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
-    console.log(sortedData)
   }
 
   return (
     <div className='ServiciosCMS_Container'>
       <section className='CMS__headers'>
-        <h2>HEADER</h2>
+        <h2>ENCABEZADO</h2>
         <CMS_Card
           name="Imagen"
           content={Data[0]['bg_img']}

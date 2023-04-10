@@ -10,7 +10,6 @@ function Nav(props) {
   const [navBarColor, setNavBarColor] = useState(false);
   const [navBarColorScroll, setNavBarColorScroll] = useState(false);
   const navRef = useRef(null);
-  const menuMobile = useRef(null);
 
   function toggleMenu() {
     setMenuMobileVisible(prevState => !prevState);

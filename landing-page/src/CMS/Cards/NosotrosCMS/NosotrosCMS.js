@@ -44,15 +44,12 @@ function NosotrosCMS() {
     sortedData = Object.entries(Data[0].comite)
   .sort(([, a], [, b]) => a.order - b.order)
   .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
-    console.log(sortedData)
   }
-
-  console.log('Data', Data)
 
   return (
     <div className='NosotrosCMS_Container'>
     <section className='CMS__headers'>
-        <h2>HEADER</h2>
+        <h2>ENCABEZADO</h2>
 
         <CMS_Card
           name="Imagen"
@@ -82,6 +79,14 @@ function NosotrosCMS() {
           collection='aboutUs'
           document='aboutUs'
           field='content'
+          route={route}/>
+
+        <CMS_Card
+          name="Organigrama"
+          content={Data[0]['organigrama']}
+          collection='aboutUs'
+          document='aboutUs'
+          field='organigrama'
           route={route}/>
 
       </section>

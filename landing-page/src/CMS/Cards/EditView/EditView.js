@@ -13,10 +13,7 @@ import {
   updateDoc,
   getDocs,
   getDoc,
-  query,
-  orderBy,
   deleteField,
-  set,
   deleteDoc
   
 } from 'firebase/firestore';
@@ -28,7 +25,6 @@ function EditView(props) {
   let navigate = useNavigate();
   const location = useLocation();
   var data = location.state?.data;
-  console.log('data', data);
 
   const [Data, setData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -58,8 +54,6 @@ function EditView(props) {
   }, []);
 
   let realData;
-  console.log('Data', Data);
-  console.log('data?.fieldTwo', data?.fieldTwo);
 
   useEffect(() => {
     fetchData();
@@ -183,7 +177,7 @@ function EditView(props) {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
-        let value = inputValue[data['content']]
+        let value = getDriveImageUrl(inputValue[data['content']])
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: value
         });
@@ -194,7 +188,7 @@ function EditView(props) {
       if (Object.keys(inputValue).length === 0) {
         alert('No se han realizado cambios')
       } else {
-        let value = inputValue[data['content']]
+        let value = getDriveImageUrl(inputValue[data['content']])
         updateDoc(doc(db, data?.collection, data?.document), {
           [data?.field]: value
         });

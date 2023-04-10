@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect, useMemo } from 'react'
+import React, {useState, useEffect, useMemo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -8,14 +8,7 @@ import Button from '../../../components/Button'
 import {
   collection,
   doc,
-  updateDoc,
-  arrayUnion,
   addDoc,
-  getDocs,
-  getDoc,
-  query,
-  orderBy,
-  set,
   setDoc,
   serverTimestamp
   

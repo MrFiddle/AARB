@@ -11,7 +11,6 @@ import Login from '../CMS/Login';
 import { UserAuthContextProvider } from '../CMS/context/UserAuthContext';
 
 import CMS from '../CMS/CMS';
-import NavCMS from '../CMS/NavCMS';
 import HomeCMS from '../CMS/Cards/HomeCMS/HomeCMS';
 import MainPage from '../CMS/Cards/MainPageCMS/MainPage';
 import NosotrosCMS from '../CMS/Cards/NosotrosCMS/NosotrosCMS';
@@ -19,7 +18,6 @@ import ServiciosCMS from '../CMS/Cards/ServiciosCMS/ServiciosCMS';
 import NoticiasCMS from '../CMS/Cards/NoticiasCMS/NoticiasCMS';
 import EditView from '../CMS/Cards/EditView/EditView';
 import CreateView from '../CMS/Cards/CreateView/CreateView';
-import Test from '../CMS/Cards/Test';
 
 function AvailableRoutes() {
 
@@ -63,7 +61,6 @@ function AvailableRoutes() {
           <Route path='editar/:coll/:doc/:field/*' element={<EditView />}/>
           <Route path='anadir/:coll/:doc/:field/*' element={<CreateView />}/>
         </Route>
-        <Route path="test" element={<Test />} />
 
         <Route path="*" element={<Error404 />} />
       </Routes>
