@@ -15,6 +15,14 @@
     padding-top: 30px;
 }
 
+.footer__logo {
+  padding-left: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 150px;
+  height: auto;
+}
+
 .footer__content {
     display: flex;
     justify-content: center;
