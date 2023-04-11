@@ -42,7 +42,7 @@ function Noticias() {
     }, [myDivRef, dataLoaded]);
 
     function handleClick(newId) {
-        window.location.href = '/noticias/' + newId;
+        window.location.href = '#/noticias/' + newId;
     }
     var fecha;
 
