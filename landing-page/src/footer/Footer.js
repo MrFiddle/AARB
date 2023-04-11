@@ -7,24 +7,31 @@ import {
   collection
 } from 'firebase/firestore';
 import db from '../firestore'
+import AARB_Logo from '../assets/white_nav.svg'
 import './Footer.css'
 
 function Footer() {
     
   const [Data, setData] = useState([]);
+  const [ContactData, setContactData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
 
+
   const fetchData = useCallback(async () => {
-    const querySnapshot = await getDocs(collection(db, 'footer'));
-    const data = querySnapshot.docs.map((doc) => doc.data());
-    setData(data);
+    const footerQuerySnapshot = await getDocs(collection(db, 'footer'));
+    const footerData = footerQuerySnapshot.docs.map((doc) => doc.data());
+    setData(footerData);
+
+    const mainPageQuerySnapshot = await getDocs(collection(db, 'mainPage'));
+    const mainPageData = mainPageQuerySnapshot.docs.map((doc) => doc.data());
+    setContactData(mainPageData);
+
     setDataLoaded(true);
-  }, []);
-
-  useEffect(() => {
+}, []);
+  
+useEffect(() => {
     fetchData();
-  }, [fetchData]);
-
+}, [fetchData]);
 
   // DATA
   var footerContent, footerPhone, footerMail;
@@ -34,16 +41,14 @@ function Footer() {
     return <div></div>
   } else {
     footerContent = Data[0].content;
-    footerPhone = Data[0].phone;
-    footerMail = Data[0].email;
+    footerPhone = ContactData[1].phone;
+    footerMail = ContactData[1].email;
   }
   
 
   return (
     <div className='footer'>
-        <span>
-            <FontAwesomeIcon icon={solid('seedling')} />
-        </span>
+        <img src={AARB_Logo} alt="logo" id="hero__logo" className='footer__logo'/>
         <div class="footer__content">
             <p id="footer__content">{footerContent}</p>
         </div>

@@ -166,7 +166,7 @@ function MainPage() {
 
       {/* Footer */}
       <section className='CMS__headers'>
-        <h2>FOOTER</h2>
+        <h2>PIE DE PÁGINA</h2>
 
         <CMS_Card
           name="Contenido"
