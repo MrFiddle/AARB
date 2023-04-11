@@ -6,6 +6,8 @@ import {
     getDoc,
 } from 'firebase/firestore';
 import db from '../firestore'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
 import Nav from '../navBar/Nav';
 import Footer from '../footer/Footer';
@@ -55,6 +57,17 @@ function NoticiaV(props) {
                   <p>{Data.autor}</p>
                   <p>{new Date((Data.fecha).seconds * 1000 + (Data.fecha).nanoseconds / 1000000).toLocaleDateString('es-MX')}</p>
                   <Link className='noticiaV-regresar' to="/noticias">Regresar</Link>
+                  <section className='share__buttons'>
+
+                      <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noreferrer">
+                        <FontAwesomeIcon icon={brands('facebook')} />
+                      </a>
+
+                      <a href={`whatsapp://send?text=${window.location.href}`} target="_blank" rel="noreferrer">
+                        <FontAwesomeIcon icon={brands('whatsapp')} />
+                      </a>
+                      
+                    </section>
               </div>
               <div className='noticiaV-content'>
                   <img src={Data.img} alt={Data.titulo} />
