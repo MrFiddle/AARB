@@ -16,28 +16,22 @@ function Footer() {
   const [ContactData, setContactData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
 
+
   const fetchData = useCallback(async () => {
-    const querySnapshot = await getDocs(collection(db, 'footer'));
-    const data = querySnapshot.docs.map((doc) => doc.data());
-    setData(data);
-    setDataLoaded(true);
-  }, []);
+    const footerQuerySnapshot = await getDocs(collection(db, 'footer'));
+    const footerData = footerQuerySnapshot.docs.map((doc) => doc.data());
+    setData(footerData);
 
-  const fetchDataTwo = useCallback(async () => {
-    const querySnapshot = await getDocs(collection(db, 'mainPage'));
-    const data = querySnapshot.docs.map((doc) => doc.data());
-    setContactData(data);
-    setDataLoaded(true);
-  }, []);
+    const mainPageQuerySnapshot = await getDocs(collection(db, 'mainPage'));
+    const mainPageData = mainPageQuerySnapshot.docs.map((doc) => doc.data());
+    setContactData(mainPageData);
 
-  useEffect(() => {
+    setDataLoaded(true);
+}, []);
+  
+useEffect(() => {
     fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    fetchDataTwo();
-  }, [fetchDataTwo]);
-
+}, [fetchData]);
 
   // DATA
   var footerContent, footerPhone, footerMail;
