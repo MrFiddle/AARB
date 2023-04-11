@@ -32,6 +32,12 @@ function NoticiaV(props) {
       }
   }, [id]);
 
+  const shareOnFacebook = (event) => {
+    event.preventDefault();
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+  }
+
   useEffect(() => {
       async function fetchDataAndSetData() {
           const data = await getDocument();
@@ -59,7 +65,7 @@ function NoticiaV(props) {
                   <Link className='noticiaV-regresar' to="/noticias">Regresar</Link>
                   <section className='share__buttons'>
 
-                      <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noreferrer">
+                      <a onClick={shareOnFacebook} target="_blank" rel="noreferrer">
                         <FontAwesomeIcon icon={brands('facebook')} />
                       </a>
 
