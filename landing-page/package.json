@@ -1,5 +1,6 @@
 {
   "name": "aarb",
+  "description": "Asociación de Agricultores del Rio Baluarte",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
