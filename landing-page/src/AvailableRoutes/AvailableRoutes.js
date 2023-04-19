@@ -21,7 +21,8 @@ import CreateView from '../CMS/Cards/CreateView/CreateView';
 
 function AvailableRoutes() {
 
-  const userToken = localStorage.getItem('userToken');
+  // const userToken = localStorage.getItem('userToken');
+  const userToken = sessionStorage.getItem('userToken');
 
   if (!userToken) {
     return (

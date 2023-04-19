@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useContext } from "react";
 import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    getIdToken,
+    getIdToken
     
 } from 'firebase/auth'
 
@@ -21,7 +21,8 @@ export function UserAuthContextProvider ({children}) {
         return getIdToken(userCredential.user);
       })
       .then((idToken) => {
-        localStorage.setItem('userToken', idToken);
+        // localStorage.setItem('userToken', idToken);
+        sessionStorage.setItem('userToken', idToken);
       })
   }  
 
